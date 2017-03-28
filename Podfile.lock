@@ -1,0 +1,21 @@
+PODS:
+  - libffi-iOS (1.0.0)
+
+DEPENDENCIES:
+  - libffi-iOS (from `https://github.com/sunnyxx/libffi-iOS.git`)
+
+EXTERNAL SOURCES:
+  libffi-iOS:
+    :git: https://github.com/sunnyxx/libffi-iOS.git
+
+CHECKOUT OPTIONS:
+  libffi-iOS:
+    :commit: c99de7586d22b9b35100d098a37ed42cb75e26dc
+    :git: https://github.com/sunnyxx/libffi-iOS.git
+
+SPEC CHECKSUMS:
+  libffi-iOS: ef078b4e497e971a867114acc56e89c5cd85c45a
+
+PODFILE CHECKSUM: 6c20a21976cb9bb0ed4bcff82537c62e00f9c7f2
+
+COCOAPODS: 1.2.0

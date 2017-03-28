@@ -1,0 +1,707 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		09C3374448C630FCAE750C538A4D5542 /* Pods-NVMAspectsTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CA2901AB422DE5475058B33B78945CEF /* Pods-NVMAspectsTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0B07C677180B9DA00A7ABFA69EE0E797 /* Pods-NVMAspects-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 224DCDAF08BF00FD2202EE426B82C9DE /* Pods-NVMAspects-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1E52A3835D04AA65C3B639EA88C36908 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		2232983D6B7303CD6E80C11FDE522662 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		5B487054B01555334018E1A05699CC69 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		723FA62FBEA342B042D3E6E4D95FEC62 /* Pods-NVMAspectsDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2117B1ED876B12115AD86E7EA5AC89C4 /* Pods-NVMAspectsDemo-dummy.m */; };
+		7DC030B76232B6E1DA7FC4EB69D89806 /* Pods-NVMAspectsDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C4A8255F8249C67840955943754EC8 /* Pods-NVMAspectsDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		966A67FAF166B74DB13AB40B06CE20FF /* Pods-NVMAspectsTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE81F8A0F56793BC4D328DAFAAA7FEE8 /* Pods-NVMAspectsTests-dummy.m */; };
+		D301DBDAE69272CBD9E813D57C6AABD5 /* Pods-NVMAspects-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 519497C6F5234CC6BE4BE5800FFBAE96 /* Pods-NVMAspects-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		066CA2E9244A1888AF712701972BF0B2 /* Pods-NVMAspectsTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NVMAspectsTests-frameworks.sh"; sourceTree = "<group>"; };
+		06F6CB486C62C40532E18BE0FB2DFB3A /* Pods-NVMAspectsDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NVMAspectsDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0FED088423E217E5C1A67138212CA110 /* ffitarget_arm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffitarget_arm.h; path = libffi/ffitarget_arm.h; sourceTree = "<group>"; };
+		17873FF39104C38689FEC0FEFF6E1D6C /* ffi_i386.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi_i386.h; path = libffi/ffi_i386.h; sourceTree = "<group>"; };
+		1A83925E678F8218FF3E3B8B49BF8688 /* Pods-NVMAspectsDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NVMAspectsDemo-resources.sh"; sourceTree = "<group>"; };
+		1BBC5E6DD3804DB759C85C1E72348428 /* Pods-NVMAspects-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NVMAspects-acknowledgements.plist"; sourceTree = "<group>"; };
+		1BD0DC9ACD30A2988B0AA5A88BBAC60A /* Pods_NVMAspectsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NVMAspectsDemo.framework; path = "Pods-NVMAspectsDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2117B1ED876B12115AD86E7EA5AC89C4 /* Pods-NVMAspectsDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NVMAspectsDemo-dummy.m"; sourceTree = "<group>"; };
+		224DCDAF08BF00FD2202EE426B82C9DE /* Pods-NVMAspects-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NVMAspects-umbrella.h"; sourceTree = "<group>"; };
+		23F2E663F9F26FEF1BFCCD3732883B7D /* Pods-NVMAspects.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NVMAspects.debug.xcconfig"; sourceTree = "<group>"; };
+		28992E3C5BC616590217CFAB99EFB6ED /* libffi.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libffi.a; path = libffi/libffi.a; sourceTree = "<group>"; };
+		29D0688921D0B0CBA7318140D74528D4 /* Pods-NVMAspectsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NVMAspectsTests.release.xcconfig"; sourceTree = "<group>"; };
+		2B6A4E023A581CA7998F356EE65483AD /* ffi_common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi_common.h; path = libffi/ffi_common.h; sourceTree = "<group>"; };
+		3B12E4B353DBFE76BABD74D4C700135E /* Pods_NVMAspectsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NVMAspectsTests.framework; path = "Pods-NVMAspectsTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41EF51FF43E1FA7FB36C65842707F27F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49B4038C689B64D8D97CB99EEE279218 /* Pods-NVMAspectsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NVMAspectsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		519497C6F5234CC6BE4BE5800FFBAE96 /* Pods-NVMAspects-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NVMAspects-dummy.m"; sourceTree = "<group>"; };
+		53F9D2DE9BB5A19895FE7035D9C5F543 /* ffitarget_x86_64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffitarget_x86_64.h; path = libffi/ffitarget_x86_64.h; sourceTree = "<group>"; };
+		5500F601E6778D431F489F9CAB5D2750 /* Pods_NVMAspects.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NVMAspects.framework; path = "Pods-NVMAspects.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55023C38D705B3FBA03D5EDF11ECB43B /* Pods-NVMAspects-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NVMAspects-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5869B7F1DAB12EF65636C61D63B4EE6F /* Pods-NVMAspects-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NVMAspects-resources.sh"; sourceTree = "<group>"; };
+		5BC0D971B0F322CBDEBAD727CD8AC49F /* Pods-NVMAspectsDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NVMAspectsDemo-frameworks.sh"; sourceTree = "<group>"; };
+		6058D62B6BB6744D262146C11B4C74A4 /* ffi_arm64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi_arm64.h; path = libffi/ffi_arm64.h; sourceTree = "<group>"; };
+		63513DA8422AD4F8C904EAD538BA474D /* ffitarget.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffitarget.h; path = libffi/ffitarget.h; sourceTree = "<group>"; };
+		67B453DAD7FBEB97EA841BB472DE6763 /* Pods-NVMAspectsTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NVMAspectsTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		70259754491F052DBF01E06473E59400 /* Pods-NVMAspectsDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-NVMAspectsDemo.modulemap"; sourceTree = "<group>"; };
+		8D3A3E64FA60E60A4FC34ED72D49272A /* Pods-NVMAspects.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NVMAspects.release.xcconfig"; sourceTree = "<group>"; };
+		8DFCC9C3D4CDE68AD65C8D21B461B470 /* Pods-NVMAspectsTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NVMAspectsTests-resources.sh"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93B804C4F7001F1C92945EA0FE7DA535 /* Pods-NVMAspectsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NVMAspectsDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		9DEF213CF6FB0C2DFA3E407481C83517 /* Pods-NVMAspectsTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NVMAspectsTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A5C4A8255F8249C67840955943754EC8 /* Pods-NVMAspectsDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NVMAspectsDemo-umbrella.h"; sourceTree = "<group>"; };
+		A98B65E127F4BCAF8A2457B2CAC75888 /* Pods-NVMAspectsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NVMAspectsDemo.release.xcconfig"; sourceTree = "<group>"; };
+		AFB7BFC3BAA94DF63E784EEA9D56C36E /* ffitarget_i386.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffitarget_i386.h; path = libffi/ffitarget_i386.h; sourceTree = "<group>"; };
+		CA2901AB422DE5475058B33B78945CEF /* Pods-NVMAspectsTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NVMAspectsTests-umbrella.h"; sourceTree = "<group>"; };
+		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CC0A312A4E10A96DE2D3A0A9B5E7D9A6 /* ffi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi.h; path = libffi/ffi.h; sourceTree = "<group>"; };
+		CD13DB003B9B63AB075D0FC4E3ABBD13 /* Pods-NVMAspectsDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NVMAspectsDemo-acknowledgements.plist"; sourceTree = "<group>"; };
+		DD3BD06430D0347C8786ECB2654D97FC /* ffitarget_arm64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffitarget_arm64.h; path = libffi/ffitarget_arm64.h; sourceTree = "<group>"; };
+		DDED99D9D56E8079DC28501D3D91364C /* ffi_arm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi_arm.h; path = libffi/ffi_arm.h; sourceTree = "<group>"; };
+		DFC0E962EF22B51C12FBACF9468DB8AF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA2F741FCC2B5BF7386311C79CEDD342 /* Pods-NVMAspects.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-NVMAspects.modulemap"; sourceTree = "<group>"; };
+		F56768ED956079B71E12F38FDED3CF67 /* Pods-NVMAspectsTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-NVMAspectsTests.modulemap"; sourceTree = "<group>"; };
+		FCDA2A5A56D1EAFDA414E6536D3EC74A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE81F8A0F56793BC4D328DAFAAA7FEE8 /* Pods-NVMAspectsTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NVMAspectsTests-dummy.m"; sourceTree = "<group>"; };
+		FFB1B9A2994B5943043BF733B2E83EFD /* ffi_x86_64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi_x86_64.h; path = libffi/ffi_x86_64.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0CC483552E9B3E56E69F6A363A54B202 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E52A3835D04AA65C3B639EA88C36908 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AFE5E9D6B072FE1E0AEA41C4E5FFDB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B487054B01555334018E1A05699CC69 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57165403FB57FEDC79089482E750CA04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2232983D6B7303CD6E80C11FDE522662 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3942CBD575846D25D913DD3C555CDDA1 /* libffi-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CC0A312A4E10A96DE2D3A0A9B5E7D9A6 /* ffi.h */,
+				DDED99D9D56E8079DC28501D3D91364C /* ffi_arm.h */,
+				6058D62B6BB6744D262146C11B4C74A4 /* ffi_arm64.h */,
+				2B6A4E023A581CA7998F356EE65483AD /* ffi_common.h */,
+				17873FF39104C38689FEC0FEFF6E1D6C /* ffi_i386.h */,
+				FFB1B9A2994B5943043BF733B2E83EFD /* ffi_x86_64.h */,
+				63513DA8422AD4F8C904EAD538BA474D /* ffitarget.h */,
+				0FED088423E217E5C1A67138212CA110 /* ffitarget_arm.h */,
+				DD3BD06430D0347C8786ECB2654D97FC /* ffitarget_arm64.h */,
+				AFB7BFC3BAA94DF63E784EEA9D56C36E /* ffitarget_i386.h */,
+				53F9D2DE9BB5A19895FE7035D9C5F543 /* ffitarget_x86_64.h */,
+				72959C8DFB63E4516E6FD8FD685A74BA /* Frameworks */,
+			);
+			name = "libffi-iOS";
+			path = "libffi-iOS";
+			sourceTree = "<group>";
+		};
+		72959C8DFB63E4516E6FD8FD685A74BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28992E3C5BC616590217CFAB99EFB6ED /* libffi.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		77E15A4F12DE1F1ED203174C457DFF3F /* Pods-NVMAspects */ = {
+			isa = PBXGroup;
+			children = (
+				41EF51FF43E1FA7FB36C65842707F27F /* Info.plist */,
+				EA2F741FCC2B5BF7386311C79CEDD342 /* Pods-NVMAspects.modulemap */,
+				55023C38D705B3FBA03D5EDF11ECB43B /* Pods-NVMAspects-acknowledgements.markdown */,
+				1BBC5E6DD3804DB759C85C1E72348428 /* Pods-NVMAspects-acknowledgements.plist */,
+				519497C6F5234CC6BE4BE5800FFBAE96 /* Pods-NVMAspects-dummy.m */,
+				5869B7F1DAB12EF65636C61D63B4EE6F /* Pods-NVMAspects-resources.sh */,
+				224DCDAF08BF00FD2202EE426B82C9DE /* Pods-NVMAspects-umbrella.h */,
+				23F2E663F9F26FEF1BFCCD3732883B7D /* Pods-NVMAspects.debug.xcconfig */,
+				8D3A3E64FA60E60A4FC34ED72D49272A /* Pods-NVMAspects.release.xcconfig */,
+			);
+			name = "Pods-NVMAspects";
+			path = "Target Support Files/Pods-NVMAspects";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				C60C6149D60586E8697C3EFD1605B787 /* Pods */,
+				9AA6E81C75FB1417B149A30C0E3317A6 /* Products */,
+				F76F4784BF5BBE669AAC6C9374AD83F5 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		9328A733E847EB8FF4C6E6264FD521B0 /* Pods-NVMAspectsDemo */ = {
+			isa = PBXGroup;
+			children = (
+				DFC0E962EF22B51C12FBACF9468DB8AF /* Info.plist */,
+				70259754491F052DBF01E06473E59400 /* Pods-NVMAspectsDemo.modulemap */,
+				06F6CB486C62C40532E18BE0FB2DFB3A /* Pods-NVMAspectsDemo-acknowledgements.markdown */,
+				CD13DB003B9B63AB075D0FC4E3ABBD13 /* Pods-NVMAspectsDemo-acknowledgements.plist */,
+				2117B1ED876B12115AD86E7EA5AC89C4 /* Pods-NVMAspectsDemo-dummy.m */,
+				5BC0D971B0F322CBDEBAD727CD8AC49F /* Pods-NVMAspectsDemo-frameworks.sh */,
+				1A83925E678F8218FF3E3B8B49BF8688 /* Pods-NVMAspectsDemo-resources.sh */,
+				A5C4A8255F8249C67840955943754EC8 /* Pods-NVMAspectsDemo-umbrella.h */,
+				93B804C4F7001F1C92945EA0FE7DA535 /* Pods-NVMAspectsDemo.debug.xcconfig */,
+				A98B65E127F4BCAF8A2457B2CAC75888 /* Pods-NVMAspectsDemo.release.xcconfig */,
+			);
+			name = "Pods-NVMAspectsDemo";
+			path = "Target Support Files/Pods-NVMAspectsDemo";
+			sourceTree = "<group>";
+		};
+		9AA6E81C75FB1417B149A30C0E3317A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5500F601E6778D431F489F9CAB5D2750 /* Pods_NVMAspects.framework */,
+				1BD0DC9ACD30A2988B0AA5A88BBAC60A /* Pods_NVMAspectsDemo.framework */,
+				3B12E4B353DBFE76BABD74D4C700135E /* Pods_NVMAspectsTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB49E473B9EB2F7D00E485F9AEA17C08 /* Pods-NVMAspectsTests */ = {
+			isa = PBXGroup;
+			children = (
+				FCDA2A5A56D1EAFDA414E6536D3EC74A /* Info.plist */,
+				F56768ED956079B71E12F38FDED3CF67 /* Pods-NVMAspectsTests.modulemap */,
+				9DEF213CF6FB0C2DFA3E407481C83517 /* Pods-NVMAspectsTests-acknowledgements.markdown */,
+				67B453DAD7FBEB97EA841BB472DE6763 /* Pods-NVMAspectsTests-acknowledgements.plist */,
+				FE81F8A0F56793BC4D328DAFAAA7FEE8 /* Pods-NVMAspectsTests-dummy.m */,
+				066CA2E9244A1888AF712701972BF0B2 /* Pods-NVMAspectsTests-frameworks.sh */,
+				8DFCC9C3D4CDE68AD65C8D21B461B470 /* Pods-NVMAspectsTests-resources.sh */,
+				CA2901AB422DE5475058B33B78945CEF /* Pods-NVMAspectsTests-umbrella.h */,
+				49B4038C689B64D8D97CB99EEE279218 /* Pods-NVMAspectsTests.debug.xcconfig */,
+				29D0688921D0B0CBA7318140D74528D4 /* Pods-NVMAspectsTests.release.xcconfig */,
+			);
+			name = "Pods-NVMAspectsTests";
+			path = "Target Support Files/Pods-NVMAspectsTests";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C60C6149D60586E8697C3EFD1605B787 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3942CBD575846D25D913DD3C555CDDA1 /* libffi-iOS */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F76F4784BF5BBE669AAC6C9374AD83F5 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				77E15A4F12DE1F1ED203174C457DFF3F /* Pods-NVMAspects */,
+				9328A733E847EB8FF4C6E6264FD521B0 /* Pods-NVMAspectsDemo */,
+				AB49E473B9EB2F7D00E485F9AEA17C08 /* Pods-NVMAspectsTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		36FA4B68B1B28523A9661419BFF34F52 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09C3374448C630FCAE750C538A4D5542 /* Pods-NVMAspectsTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		550BFAAF5A774706E0F2ECAD2F7E7210 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DC030B76232B6E1DA7FC4EB69D89806 /* Pods-NVMAspectsDemo-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BE2C90F3C37C4445A7CCBB9D63E1E54 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B07C677180B9DA00A7ABFA69EE0E797 /* Pods-NVMAspects-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		52DFD7B15E02B8DDC9388AC6BCE93D90 /* Pods-NVMAspectsDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C960715FBCAA9DE61FB61B34410080C8 /* Build configuration list for PBXNativeTarget "Pods-NVMAspectsDemo" */;
+			buildPhases = (
+				30936FDD426C174EE0C83609F8551088 /* Sources */,
+				3AFE5E9D6B072FE1E0AEA41C4E5FFDB9 /* Frameworks */,
+				550BFAAF5A774706E0F2ECAD2F7E7210 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-NVMAspectsDemo";
+			productName = "Pods-NVMAspectsDemo";
+			productReference = 1BD0DC9ACD30A2988B0AA5A88BBAC60A /* Pods_NVMAspectsDemo.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		92F99EA29763684976E93B540191499B /* Pods-NVMAspects */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C1FC6F99CE6664858FFE0BDCEA19547 /* Build configuration list for PBXNativeTarget "Pods-NVMAspects" */;
+			buildPhases = (
+				05B05E6C8903254515A9EEB96B81A813 /* Sources */,
+				0CC483552E9B3E56E69F6A363A54B202 /* Frameworks */,
+				9BE2C90F3C37C4445A7CCBB9D63E1E54 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-NVMAspects";
+			productName = "Pods-NVMAspects";
+			productReference = 5500F601E6778D431F489F9CAB5D2750 /* Pods_NVMAspects.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AD345D5D6EC479A6E1F19B4192F0B66D /* Pods-NVMAspectsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B58F4EDFDBF473B913BBACB83B81A50 /* Build configuration list for PBXNativeTarget "Pods-NVMAspectsTests" */;
+			buildPhases = (
+				D015A00D0D4F3080DCAD2D2214E83F14 /* Sources */,
+				57165403FB57FEDC79089482E750CA04 /* Frameworks */,
+				36FA4B68B1B28523A9661419BFF34F52 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-NVMAspectsTests";
+			productName = "Pods-NVMAspectsTests";
+			productReference = 3B12E4B353DBFE76BABD74D4C700135E /* Pods_NVMAspectsTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 9AA6E81C75FB1417B149A30C0E3317A6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				92F99EA29763684976E93B540191499B /* Pods-NVMAspects */,
+				52DFD7B15E02B8DDC9388AC6BCE93D90 /* Pods-NVMAspectsDemo */,
+				AD345D5D6EC479A6E1F19B4192F0B66D /* Pods-NVMAspectsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		05B05E6C8903254515A9EEB96B81A813 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D301DBDAE69272CBD9E813D57C6AABD5 /* Pods-NVMAspects-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30936FDD426C174EE0C83609F8551088 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				723FA62FBEA342B042D3E6E4D95FEC62 /* Pods-NVMAspectsDemo-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D015A00D0D4F3080DCAD2D2214E83F14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				966A67FAF166B74DB13AB40B06CE20FF /* Pods-NVMAspectsTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		015A368F878AC3E2CEAE21DDE8026304 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		1E305F4FEB6ADCE1AFBE931A1705D22B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49B4038C689B64D8D97CB99EEE279218 /* Pods-NVMAspectsTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-NVMAspectsTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NVMAspectsTests/Pods-NVMAspectsTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_NVMAspectsTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3E2A92ACDBCB2D51F311E98ECE0B7A7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D3A3E64FA60E60A4FC34ED72D49272A /* Pods-NVMAspects.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-NVMAspects/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NVMAspects/Pods-NVMAspects.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_NVMAspects;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		44CDBB6D11DE06DB64D6268622BDC47E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		549007015855C2A645C924B74F66CED4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29D0688921D0B0CBA7318140D74528D4 /* Pods-NVMAspectsTests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-NVMAspectsTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NVMAspectsTests/Pods-NVMAspectsTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_NVMAspectsTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BEB16A9C53C0C4EFDBFAC9E739CF7771 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23F2E663F9F26FEF1BFCCD3732883B7D /* Pods-NVMAspects.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-NVMAspects/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NVMAspects/Pods-NVMAspects.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_NVMAspects;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E39579DD0CC3B95D1F48ADF588A064B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93B804C4F7001F1C92945EA0FE7DA535 /* Pods-NVMAspectsDemo.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-NVMAspectsDemo/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NVMAspectsDemo/Pods-NVMAspectsDemo.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_NVMAspectsDemo;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F6212606DCC61A2A059931E7F1781E50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A98B65E127F4BCAF8A2457B2CAC75888 /* Pods-NVMAspectsDemo.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-NVMAspectsDemo/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NVMAspectsDemo/Pods-NVMAspectsDemo.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_NVMAspectsDemo;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				015A368F878AC3E2CEAE21DDE8026304 /* Debug */,
+				44CDBB6D11DE06DB64D6268622BDC47E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B58F4EDFDBF473B913BBACB83B81A50 /* Build configuration list for PBXNativeTarget "Pods-NVMAspectsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E305F4FEB6ADCE1AFBE931A1705D22B /* Debug */,
+				549007015855C2A645C924B74F66CED4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C1FC6F99CE6664858FFE0BDCEA19547 /* Build configuration list for PBXNativeTarget "Pods-NVMAspects" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEB16A9C53C0C4EFDBFAC9E739CF7771 /* Debug */,
+				3E2A92ACDBCB2D51F311E98ECE0B7A7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C960715FBCAA9DE61FB61B34410080C8 /* Build configuration list for PBXNativeTarget "Pods-NVMAspectsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E39579DD0CC3B95D1F48ADF588A064B8 /* Debug */,
+				F6212606DCC61A2A059931E7F1781E50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

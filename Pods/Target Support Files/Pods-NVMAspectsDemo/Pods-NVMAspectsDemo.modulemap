@@ -1,0 +1,6 @@
+framework module Pods_NVMAspectsDemo {
+  umbrella header "Pods-NVMAspectsDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

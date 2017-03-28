@@ -1,0 +1,10 @@
+stages:
+  - build
+
+analyze_proect:
+  stage: build
+  script:
+    - scan --workspace 'NVMAspects.xcworkspace' --scheme 'NVMAspectsTests' --device 'iPhone 7 Plus' --code_coverage --clean --verbose
+    - nvmlint
+  only:
+    - master
