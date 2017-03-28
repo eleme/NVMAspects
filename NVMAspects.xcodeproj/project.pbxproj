@@ -12,6 +12,12 @@
 		AD8BBB891D8FCB2C00886DC9 /* NVMAspectsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8BBB881D8FCB2C00886DC9 /* NVMAspectsTests.m */; };
 		AD8BBB8B1D8FCB2C00886DC9 /* NVMAspects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD908CCA1D6C27FC00AF2F48 /* NVMAspects.framework */; };
 		AD908CCE1D6C27FC00AF2F48 /* NVMAspects.h in Headers */ = {isa = PBXBuildFile; fileRef = AD908CCD1D6C27FC00AF2F48 /* NVMAspects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB03389F1E8A7768004C2909 /* Aspects.h in Headers */ = {isa = PBXBuildFile; fileRef = CB03389D1E8A7768004C2909 /* Aspects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB0338A01E8A7768004C2909 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = CB03389E1E8A7768004C2909 /* Aspects.m */; };
+		CB0338A71E8A8AC4004C2909 /* AspectData.h in Headers */ = {isa = PBXBuildFile; fileRef = CB0338A51E8A8AC4004C2909 /* AspectData.h */; };
+		CB0338A81E8A8AC4004C2909 /* AspectData.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0338A61E8A8AC4004C2909 /* AspectData.m */; };
+		CB0338AB1E8A9396004C2909 /* Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = CB0338A91E8A9396004C2909 /* Utils.h */; };
+		CB0338AC1E8A9396004C2909 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0338AA1E8A9396004C2909 /* Utils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,12 @@
 		AD908CCD1D6C27FC00AF2F48 /* NVMAspects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NVMAspects.h; sourceTree = "<group>"; };
 		AD908CCF1D6C27FC00AF2F48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEC8053EBB029D4B8670516A /* Pods-NVMAspects.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NVMAspects.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NVMAspects/Pods-NVMAspects.debug.xcconfig"; sourceTree = "<group>"; };
+		CB03389D1E8A7768004C2909 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		CB03389E1E8A7768004C2909 /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
+		CB0338A51E8A8AC4004C2909 /* AspectData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AspectData.h; sourceTree = "<group>"; };
+		CB0338A61E8A8AC4004C2909 /* AspectData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AspectData.m; sourceTree = "<group>"; };
+		CB0338A91E8A9396004C2909 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		CB0338AA1E8A9396004C2909 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		F601EE001E6FE931A94358BF /* Pods-NVMAspectsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NVMAspectsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NVMAspectsTests/Pods-NVMAspectsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +126,12 @@
 		ADD9C84D1D6C375600A441E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CB03389D1E8A7768004C2909 /* Aspects.h */,
+				CB03389E1E8A7768004C2909 /* Aspects.m */,
+				CB0338A51E8A8AC4004C2909 /* AspectData.h */,
+				CB0338A61E8A8AC4004C2909 /* AspectData.m */,
+				CB0338A91E8A9396004C2909 /* Utils.h */,
+				CB0338AA1E8A9396004C2909 /* Utils.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -141,6 +159,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0338A71E8A8AC4004C2909 /* AspectData.h in Headers */,
+				CB03389F1E8A7768004C2909 /* Aspects.h in Headers */,
+				CB0338AB1E8A9396004C2909 /* Utils.h in Headers */,
 				AD908CCE1D6C27FC00AF2F48 /* NVMAspects.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +355,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0338AC1E8A9396004C2909 /* Utils.m in Sources */,
+				CB0338A01E8A7768004C2909 /* Aspects.m in Sources */,
+				CB0338A81E8A8AC4004C2909 /* AspectData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

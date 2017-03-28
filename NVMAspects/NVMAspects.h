@@ -6,7 +6,7 @@
 //  Copyright © 2017 Rajax Network Technology Co., Ltd. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "Aspects.h"
 
 //! Project version number for NVMAspects.
 FOUNDATION_EXPORT double NVMAspectsVersionNumber;

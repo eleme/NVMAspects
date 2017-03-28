@@ -17,10 +17,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Override point for customization after application launch.
-  NSLog(@"NVMAspects version number: %@", @(NVMAspectsVersionNumber));
-  NSLog(@"NVMAspects version string: %s", NVMAspectsVersionString);
+  [[self class] nvm_hookSelector:@selector(emptyMethod)
+                      usingBlock:^(NVMAspectInfo *info) {
+                        [info.oriInvocation invoke];
+                        NSLog(@"done");
+                      } error:NULL];
+  [self emptyMethod];
+  
   return YES;
+}
+
+- (void)emptyMethod {
+  NSLog(@"%@", [NSString stringWithFormat:@"ori %@",
+                NSStringFromSelector(_cmd)]);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
