@@ -23,31 +23,33 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  [[self class] nvm_hookSelector:@selector(emptyMethod)
-                      usingBlock:^(NVMAspectInfo *info) {
-                        [info.oriInvocation invoke];
-                        NSLog(@"Hooked Empty");
-                      } error:NULL];
-  
-  [[self class] nvm_hookSelector:@selector(emptyMethod)
-                      usingBlock:^(NVMAspectInfo *info) {
-                        [info.oriInvocation invoke];
-                        NSLog(@"Hooked Empty again");
-                      } error:NULL];
+  [self nvm_hookInstanceMethod:@selector(emptyMethod)
+                    usingBlock:^(NVMAspectInfo *info) {
+                      [info.oriInvocation invoke];
+                      NSLog(@"Hooked Empty");
+                    } error:NULL];
+
+  [self nvm_hookInstanceMethod:@selector(emptyMethod)
+                    usingBlock:^(NVMAspectInfo *info) {
+                      [info.oriInvocation invoke];
+                      NSLog(@"Hooked Empty again");
+                    } error:NULL];
   
   NSObject *object = [NSObject new];
-  [[self class] nvm_hookSelector:@selector(methodReturnObject) usingBlock:^(NVMAspectInfo *info){
-    return object;
-  } error:NULL];
+  [self nvm_hookInstanceMethod:@selector(methodReturnObject)
+                    usingBlock:^(NVMAspectInfo *info){
+                      return object;
+                    } error:NULL];
   
-  [[self class] nvm_hookSelector:@selector(methodReturnInt)
-                      usingBlock:^NSInteger (NVMAspectInfo *info){
-                        return 2;
-                      } error:NULL];
-  [[self class] nvm_hookSelector:@selector(notImp)
-                      usingBlock:^(NVMAspectInfo *info){
-                        NSLog(@"Hook not imp");
-                      } error:NULL];
+  [self nvm_hookInstanceMethod:@selector(methodReturnInt)
+                    usingBlock:^NSInteger (NVMAspectInfo *info){
+                      return 2;
+                    } error:NULL];
+  
+  [self nvm_hookInstanceMethod:@selector(notImp)
+                    usingBlock:^(NVMAspectInfo *info){
+                      NSLog(@"Hook not imp");
+                    } error:NULL];
   
   [self emptyMethod];
   

@@ -10,7 +10,7 @@
 #import "Aspects.h"
 #import "Utils.h"
 
-@interface AspectData ()
+@interface NVMAspectData ()
 
 @property (nonatomic, unsafe_unretained, readwrite) Class cls;
 @property (nonatomic, assign, readwrite) SEL selector;
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation AspectData
+@implementation NVMAspectData
 
 + (instancetype)aspectDataWithClass:(Class)cls
                            selector:(SEL)selector
@@ -42,7 +42,7 @@
     methodSignature = MethodSignatureFromBlockSignature(blockSignature);
   }
   
-  AspectData *data = [AspectData new];
+  NVMAspectData *data = [NVMAspectData new];
   data.cls = cls;
   data.selector = selector;
   data.methodSignature = methodSignature;
@@ -83,7 +83,7 @@ typedef struct _Block {
 static NSMethodSignature *BlockSignature(id block, NSError **error) {
   _BlockRef layout = (__bridge void *)block;
   if (!(layout->flags & BlockFlagsHasSignature)) {
-    AspectLuckySetError(error, AspectErrorMissingBlockSignature,
+    AspectLuckySetError(error, NVMAspectErrorMissingBlockSignature,
                         [NSString stringWithFormat:@"Block %@ missing a type signature.", block]);
     return nil;
   }
@@ -93,7 +93,7 @@ static NSMethodSignature *BlockSignature(id block, NSError **error) {
     desc += 2 * sizeof(void *);
   }
   if (!desc) {
-    AspectLuckySetError(error, AspectErrorMissingBlockSignature,
+    AspectLuckySetError(error, NVMAspectErrorMissingBlockSignature,
                         [NSString stringWithFormat:@"Block %@ missing a type signature.", block]);
     return nil;
   }
@@ -140,7 +140,7 @@ static BOOL IsCompatibleWithBlockSignature(NSMethodSignature *methodSignature,
   
   if (!signaturesMatch) {
     NSString *description = [NSString stringWithFormat:@"Block signature %@ doesn't match %@.", blockSignature, methodSignature];
-    AspectLuckySetError(error, AspectErrorIncompatibleBlockSignature, description);
+    AspectLuckySetError(error, NVMAspectErrorIncompatibleBlockSignature, description);
     return NO;
   }
   return YES;

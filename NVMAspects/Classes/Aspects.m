@@ -46,7 +46,7 @@ NSString *const NVMAspectErrorDomain = @"AspectErrorDomain";
 
 static void MessageInterpreter(ffi_cif *cif, void *ret,
                                void **args, void *userdata) {
-  AspectData *data = (__bridge AspectData *)userdata;
+  NVMAspectData *data = (__bridge NVMAspectData *)userdata;
   NSUInteger numberOfArguments = data.blockSignature.numberOfArguments;
   
   NVMAspectInvocation *methodInvocation = (id)[NVMAspectInvocation invocationWithMethodSignature:data.methodSignature];
@@ -76,50 +76,83 @@ static void MessageInterpreter(ffi_cif *cif, void *ret,
   data = nil;
 }
 
-@implementation NSObject (NVMAspects)
-
-+ (void)nvm_hookSelector:(SEL)selector
-              usingBlock:(id)block
-                   error:(NSError **)error {
-  AspectData *data = [AspectData aspectDataWithClass:self selector:selector
-                                            impBlock:block error:error];
+static inline BOOL HookClass(Class class, SEL selector,
+                             id block, NSError **error) {
+  NVMAspectData *data = [NVMAspectData aspectDataWithClass:class
+                                                  selector:selector
+                                                  impBlock:block
+                                                     error:error];
   if (!data) {
-    return;
+    return NO;
   }
   
   NSMethodSignature *methodSignature = data.methodSignature;
   NSUInteger argCount = methodSignature.numberOfArguments;
+  
   ffi_type *returnType = ffiTypeFromEncodingChar(methodSignature.methodReturnType);
   ffi_type **argTypes = malloc(sizeof(ffi_type *) *argCount);
   for (int i = 0; i < argCount; i++) {
     argTypes[i] = ffiTypeFromEncodingChar([methodSignature getArgumentTypeAtIndex:i]);
   }
+  
   ffi_cif *cif = malloc(sizeof(ffi_cif));
   ffi_status status = ffi_prep_cif(cif, FFI_DEFAULT_ABI,
-                                  (unsigned int)argCount, returnType, argTypes);
+                                   (unsigned int)argCount, returnType, argTypes);
+  
   if (status != FFI_OK) {
-    return;
+    AspectLuckySetError(error, NVMAspectErrorFailToAllocTrampoline,
+                        @"Fail to alloc ffi_cif for trampoline, this should really rare.");
+    return NO;
   }
   
   IMP newIMP = NULL;
-  Method method = class_getInstanceMethod(self, selector);
-  
   void *userData = (void *)(__bridge_retained CFTypeRef)data;
   ffi_closure *closure = ffi_closure_alloc(sizeof(ffi_closure), (void **)&newIMP);
-  ffi_prep_closure_loc(closure, cif, &MessageInterpreter, userData, NULL);
+  status = ffi_prep_closure_loc(closure, cif, &MessageInterpreter, userData, NULL);
   
+  if (status != FFI_OK) {
+    AspectLuckySetError(error, NVMAspectErrorFailToAllocTrampoline,
+                        @"Fail to alloc ffi_closure for trampoline, this should really rare.");
+    return NO;
+  }
+  
+  Method method = class_getInstanceMethod(class, selector);
   if (method) {
     method_setImplementation(method, newIMP);
   } else {
-    class_addMethod(self, selector, newIMP,
+    class_addMethod(class, selector, newIMP,
                     MethodTypesFromSignature(methodSignature).UTF8String);
   }
+  
+  return YES;
 }
 
-- (void)nvm_hookSelector:(SEL)selector
-              usingBlock:(id)block
-                   error:(NSError **)error {
-  
+@implementation NSObject (NVMAspects)
+
++ (BOOL)nvm_hookClassMethod:(SEL)selector
+                 usingBlock:(id)block
+                      error:(NSError *__autoreleasing *)error {
+  return HookClass(object_getClass(self), selector, block, error);
+}
+
++ (BOOL)nvm_hookInstanceMethod:(SEL)selector
+                    usingBlock:(id)block
+                         error:(NSError *__autoreleasing *)error  {
+   return HookClass(self, selector, block, error);
+}
+
+- (BOOL)nvm_hookInstanceMethod:(SEL)selector
+                    usingBlock:(id)block
+                         error:(NSError *__autoreleasing *)error {
+  return [[self class] nvm_hookInstanceMethod:selector
+                                   usingBlock:block error:error];
+}
+
+- (BOOL)nvm_hookClassMethod:(SEL)selector
+                 usingBlock:(id)block
+                      error:(NSError *__autoreleasing *)error {
+  return [[self class] nvm_hookClassMethod:selector
+                                usingBlock:block error:error];
 }
 
 @end

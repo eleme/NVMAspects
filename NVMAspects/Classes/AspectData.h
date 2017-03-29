@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AspectData : NSObject
+@interface NVMAspectData : NSObject
 
 + (instancetype)aspectDataWithClass:(Class)cls
                            selector:(SEL)selector
