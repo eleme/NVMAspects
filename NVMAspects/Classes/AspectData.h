@@ -17,7 +17,9 @@
 
 @property (nonatomic, unsafe_unretained, readonly) Class cls;
 @property (nonatomic, assign, readonly) SEL selector;
-@property (nonatomic, strong, readonly) NSMethodSignature *selectorSignature;
+@property (nonatomic, strong, readonly) NSMethodSignature *methodSignature;
+
+@property (nonatomic, assign) BOOL hasNoReturnValue;
 
 @property (nonatomic, assign, readonly) IMP oriIMP;
 

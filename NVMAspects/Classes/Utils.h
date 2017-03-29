@@ -12,3 +12,7 @@
 extern ffi_type * ffiTypeFromEncodingChar(const char *c);
 
 extern void AspectLuckySetError(NSError **error, NSInteger code, NSString *description);
+
+extern BOOL MethodTypeMatch(const char *type, const char *otherType);
+
+extern NSString *MethodTypesFromSignature(NSMethodSignature *signature);

@@ -46,29 +46,33 @@ NSString *const NVMAspectErrorDomain = @"AspectErrorDomain";
 
 static void MessageInterpreter(ffi_cif *cif, void *ret,
                                void **args, void *userdata) {
-  AspectData *info = (__bridge AspectData *)userdata;
-  NSUInteger numberOfArguments = info.blockSignature.numberOfArguments;
+  AspectData *data = (__bridge AspectData *)userdata;
+  NSUInteger numberOfArguments = data.blockSignature.numberOfArguments;
   
-  NVMAspectInvocation *methodInvocation = (id)[NVMAspectInvocation invocationWithMethodSignature:info.selectorSignature];
-  methodInvocation.imp = info.oriIMP;
+  NVMAspectInvocation *methodInvocation = (id)[NVMAspectInvocation invocationWithMethodSignature:data.methodSignature];
+  methodInvocation.imp = data.oriIMP;
   for (NSUInteger idx = 0; idx < numberOfArguments; idx++) {
     [methodInvocation setArgument:args[idx] atIndex:idx];
   }
   
-  NVMAspectInfo *data = [NVMAspectInfo new];
-  data.slf = (__bridge id) (args[0]);
-  data.selector = info.selector;
-  data.oriInvocation = methodInvocation;
+  NVMAspectInfo *info = [NVMAspectInfo new];
+  info.slf = (__bridge id) (args[0]);
+  info.selector = info.selector;
+  info.oriInvocation = methodInvocation;
   
-  NSInvocation *blockInvocation = [NSInvocation invocationWithMethodSignature:info.blockSignature];
+  NSInvocation *blockInvocation = [NSInvocation invocationWithMethodSignature:data.blockSignature];
   if (numberOfArguments > 1) {
-    [blockInvocation setArgument:&data atIndex:1];
+    [blockInvocation setArgument:&info atIndex:1];
   }
   for (NSUInteger idx = 2; idx < numberOfArguments; idx++) {
     [blockInvocation setArgument:args[idx] atIndex:idx];
   }
   
-  [blockInvocation invokeWithTarget:info.impBlock];
+  [blockInvocation invokeWithTarget:data.impBlock];
+  if (!data.hasNoReturnValue) {
+    [blockInvocation getReturnValue:ret];
+  }
+  
   data = nil;
 }
 
@@ -83,7 +87,7 @@ static void MessageInterpreter(ffi_cif *cif, void *ret,
     return;
   }
   
-  NSMethodSignature *methodSignature = data.selectorSignature;
+  NSMethodSignature *methodSignature = data.methodSignature;
   NSUInteger argCount = methodSignature.numberOfArguments;
   ffi_type *returnType = ffiTypeFromEncodingChar(methodSignature.methodReturnType);
   ffi_type **argTypes = malloc(sizeof(ffi_type *) *argCount);
@@ -104,7 +108,12 @@ static void MessageInterpreter(ffi_cif *cif, void *ret,
   ffi_closure *closure = ffi_closure_alloc(sizeof(ffi_closure), (void **)&newIMP);
   ffi_prep_closure_loc(closure, cif, &MessageInterpreter, userData, NULL);
   
-  method_setImplementation(method, newIMP);
+  if (method) {
+    method_setImplementation(method, newIMP);
+  } else {
+    class_addMethod(self, selector, newIMP,
+                    MethodTypesFromSignature(methodSignature).UTF8String);
+  }
 }
 
 - (void)nvm_hookSelector:(SEL)selector

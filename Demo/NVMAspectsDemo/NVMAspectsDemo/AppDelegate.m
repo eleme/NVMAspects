@@ -13,6 +13,12 @@
 
 @end
 
+@interface AppDelegate (NotImp)
+
+- (void)notImp;
+
+@end
+
 @implementation AppDelegate
 
 
@@ -20,16 +26,52 @@
   [[self class] nvm_hookSelector:@selector(emptyMethod)
                       usingBlock:^(NVMAspectInfo *info) {
                         [info.oriInvocation invoke];
-                        NSLog(@"done");
+                        NSLog(@"Hooked Empty");
                       } error:NULL];
+  
+  [[self class] nvm_hookSelector:@selector(emptyMethod)
+                      usingBlock:^(NVMAspectInfo *info) {
+                        [info.oriInvocation invoke];
+                        NSLog(@"Hooked Empty again");
+                      } error:NULL];
+  
+  NSObject *object = [NSObject new];
+  [[self class] nvm_hookSelector:@selector(methodReturnObject) usingBlock:^(NVMAspectInfo *info){
+    return object;
+  } error:NULL];
+  
+  [[self class] nvm_hookSelector:@selector(methodReturnInt)
+                      usingBlock:^NSInteger (NVMAspectInfo *info){
+                        return 2;
+                      } error:NULL];
+  [[self class] nvm_hookSelector:@selector(notImp)
+                      usingBlock:^(NVMAspectInfo *info){
+                        NSLog(@"Hook not imp");
+                      } error:NULL];
+  
   [self emptyMethod];
+  
+  NSObject *returnObject = [self methodReturnObject];
+  NSAssert(returnObject == object, nil);
+  
+  NSAssert([self methodReturnInt] == 2, nil);
+  
+  [self notImp];
   
   return YES;
 }
 
 - (void)emptyMethod {
-  NSLog(@"%@", [NSString stringWithFormat:@"ori %@",
-                NSStringFromSelector(_cmd)]);
+  NSLog(@"emptyMethod");
+}
+
+- (id)methodReturnObject {
+  NSLog(@"methodReturnObject");
+  return [NSObject new];
+}
+
+- (NSInteger)methodReturnInt {
+  return 1;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

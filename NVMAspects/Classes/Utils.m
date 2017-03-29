@@ -58,3 +58,15 @@ void AspectLuckySetError(NSError **error, NSInteger code, NSString *description)
                              userInfo:@{ NSLocalizedDescriptionKey: description}];
   }
 }
+
+BOOL MethodTypeMatch(const char *type, const char *otherType) {
+  return type && otherType && type[0] == otherType[0];
+}
+
+NSString *MethodTypesFromSignature(NSMethodSignature *signature) {
+  NSMutableString *string = [NSMutableString stringWithFormat:@"%s", signature.methodReturnType];
+  for (NSInteger i = 0; i < signature.numberOfArguments; i++) {
+    [string appendString:[NSString stringWithUTF8String:[signature getArgumentTypeAtIndex:i]]];
+  }
+  return string;
+}

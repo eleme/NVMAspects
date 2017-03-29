@@ -14,7 +14,7 @@
 
 @property (nonatomic, unsafe_unretained, readwrite) Class cls;
 @property (nonatomic, assign, readwrite) SEL selector;
-@property (nonatomic, strong, readwrite) NSMethodSignature *selectorSignature;
+@property (nonatomic, strong, readwrite) NSMethodSignature *methodSignature;
 
 @property (nonatomic, assign, readwrite) IMP oriIMP;
 
@@ -33,19 +33,21 @@
   if (!blockSignature) {
     return nil;
   }
-  NSMethodSignature *selectorSignature = [cls instanceMethodSignatureForSelector:selector];
-  if (selectorSignature) {
-    if (!IsCompatibleWithBlockSignature(blockSignature, selectorSignature, error)) {
+  NSMethodSignature *methodSignature = [cls instanceMethodSignatureForSelector:selector];
+  if (methodSignature) {
+    if (!IsCompatibleWithBlockSignature(methodSignature, blockSignature, error)) {
       return nil;
     }
   } else {
-    
+    methodSignature = MethodSignatureFromBlockSignature(blockSignature);
   }
   
   AspectData *data = [AspectData new];
   data.cls = cls;
   data.selector = selector;
-  data.selectorSignature = selectorSignature;
+  data.methodSignature = methodSignature;
+  data.hasNoReturnValue = MethodTypeMatch(methodSignature.methodReturnType,
+                                          @encode(void));
   
   data.oriIMP = [cls instanceMethodForSelector:selector];
   data.impBlock = impBlock;
@@ -99,8 +101,8 @@ static NSMethodSignature *BlockSignature(id block, NSError **error) {
   return [NSMethodSignature signatureWithObjCTypes:signature];
 }
 
-static BOOL IsCompatibleWithBlockSignature(NSMethodSignature *blockSignature,
-                                           NSMethodSignature *methodSignature,
+static BOOL IsCompatibleWithBlockSignature(NSMethodSignature *methodSignature,
+                                           NSMethodSignature *blockSignature,
                                            NSError **error) {
   NSCParameterAssert(blockSignature);
   NSCParameterAssert(methodSignature);
@@ -115,14 +117,21 @@ static BOOL IsCompatibleWithBlockSignature(NSMethodSignature *blockSignature,
         signaturesMatch = NO;
       }
     }
+    
+    if (signaturesMatch) {
+      if (!MethodTypeMatch([methodSignature methodReturnType],
+                           [blockSignature methodReturnType])) {
+        signaturesMatch = NO;
+      }
+    }
+    
     // Argument 0 is self/block, argument 1 is SEL or id<AspectInfo>. We start comparing at argument 2.
     // The block can have less arguments than the method, that's ok.
     if (signaturesMatch) {
       for (NSUInteger idx = 2; idx < blockSignature.numberOfArguments; idx++) {
-        const char *methodType = [methodSignature getArgumentTypeAtIndex:idx];
-        const char *blockType = [blockSignature getArgumentTypeAtIndex:idx];
         // Only compare parameter, not the optional type data.
-        if (!methodType || !blockType || methodType[0] != blockType[0]) {
+        if (!MethodTypeMatch([methodSignature getArgumentTypeAtIndex:idx],
+                             [blockSignature getArgumentTypeAtIndex:idx])) {
           signaturesMatch = NO; break;
         }
       }
@@ -135,6 +144,15 @@ static BOOL IsCompatibleWithBlockSignature(NSMethodSignature *blockSignature,
     return NO;
   }
   return YES;
+}
+
+static NSMethodSignature *MethodSignatureFromBlockSignature(NSMethodSignature *blockSignature) {
+  NSMutableString *sig = [NSMutableString stringWithFormat:@"%s%s%s", blockSignature.methodReturnType, @encode(id), @encode(SEL)];
+  for (NSInteger step = 2; step < blockSignature.numberOfArguments; step++) {
+    NSString *argType = [NSString stringWithUTF8String:[blockSignature getArgumentTypeAtIndex:step]];
+    [sig stringByAppendingString:argType];
+  }
+  return [NSMethodSignature signatureWithObjCTypes:sig.UTF8String];
 }
 
 @end
