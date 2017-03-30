@@ -58,17 +58,18 @@
   
   [self nvm_hookInstanceMethod:@selector(methodWithoutImplement)
                     usingBlock:^(NVMAspectInfo *info){
+                      NSLog(@"%@", info.slf);
                       NSLog(@"Hooked methodWithoutImplement");
                     } error:NULL];
   
-  [self nvm_hookInstanceMethod:@selector(methodReturnRect)
-                    usingBlock:^CGRect(NVMAspectInfo *info){
-                      NSLog(@"Hooked methodReturnRect");
-                      [info.oriInvocation invoke];
-                      CGRect rect;
-                      [info.oriInvocation getReturnValue:&rect];
-                      return rect;
-                    } error:NULL];
+//  [self nvm_hookInstanceMethod:@selector(methodReturnRect)
+//                    usingBlock:^CGRect(NVMAspectInfo *info){
+//                      NSLog(@"Hooked methodReturnRect");
+//                      [info.oriInvocation invoke];
+//                      CGRect rect;
+//                      [info.oriInvocation getReturnValue:&rect];
+//                      return rect;
+//                    } error:NULL];
   
   [self methodReturnVoid];
   

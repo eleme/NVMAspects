@@ -56,7 +56,7 @@ static void MessageInterpreter(ffi_cif *cif, void *ret,
   }
   
   NVMAspectInfo *info = [NVMAspectInfo new];
-  info.slf = (__bridge id) (args[0]);
+  info.slf = methodInvocation.target;
   info.selector = info.selector;
   info.oriInvocation = methodInvocation;
   
