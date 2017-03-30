@@ -108,7 +108,7 @@ static inline BOOL HookClass(Class class, SEL selector,
   IMP newIMP = NULL;
   void *userData = (void *)(__bridge_retained CFTypeRef)data;
   ffi_closure *closure = ffi_closure_alloc(sizeof(ffi_closure), (void **)&newIMP);
-  status = ffi_prep_closure_loc(closure, cif, &MessageInterpreter, userData, NULL);
+  status = ffi_prep_closure_loc(closure, cif, &MessageInterpreter, userData, newIMP);
   
   if (status != FFI_OK) {
     AspectLuckySetError(error, NVMAspectErrorFailToAllocTrampoline,
