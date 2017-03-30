@@ -15,7 +15,7 @@ def declare_pods_from_podspec
 end
 
 def declare_pods
-  pod  'libffi-iOS', :git => 'https://github.com/sunnyxx/libffi-iOS.git'
+  pod  'libffi-iOS'
 end
 
 target 'NVMAspects' do
