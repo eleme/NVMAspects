@@ -81,6 +81,10 @@ static void MessageInterpreter(ffi_cif *cif, void *ret,
   data = nil;
 }
 
+static NSString *CifNote = @"Fail to alloc ffi_cif for trampoline, this should really rare.";
+static NSString *ClosureNote = @"Fail to alloc ffi_closure for trampoline, this should really rare.";
+static NSString *UnsupportNote = @"Encounter a unsupport type, contact the author";
+
 static inline BOOL HookClass(Class class, SEL selector,
                              id block, NSError **error) {
   NVMAspectData *data = [NVMAspectData aspectDataWithClass:class
@@ -95,9 +99,22 @@ static inline BOOL HookClass(Class class, SEL selector,
   NSUInteger argCount = methodSignature.numberOfArguments;
   
   ffi_type *returnType = ffiTypeFromEncodingChar(methodSignature.methodReturnType);
+  if (!returnType) {
+    NSCAssert(NO, UnsupportNote);
+    AspectLuckySetError(error, NVMAspectErrorUnsupportArgumentType, UnsupportNote);
+    return NO;
+  }
+  
   ffi_type **argTypes = malloc(sizeof(ffi_type *) *argCount);
+  // After this return No will leak some memory, but this should not happen when you ship a stable relase.
   for (int i = 0; i < argCount; i++) {
     argTypes[i] = ffiTypeFromEncodingChar([methodSignature getArgumentTypeAtIndex:i]);
+    
+    if (!argTypes[i]) {
+      NSCAssert(NO, UnsupportNote);
+      AspectLuckySetError(error, NVMAspectErrorUnsupportArgumentType, UnsupportNote);
+      return NO;
+    }
   }
   
   ffi_cif *cif = malloc(sizeof(ffi_cif));
@@ -106,7 +123,8 @@ static inline BOOL HookClass(Class class, SEL selector,
   
   if (status != FFI_OK) {
     AspectLuckySetError(error, NVMAspectErrorFailToAllocTrampoline,
-                        @"Fail to alloc ffi_cif for trampoline, this should really rare.");
+                        CifNote);
+    NSCAssert(NO, CifNote);
     return NO;
   }
   
@@ -117,7 +135,8 @@ static inline BOOL HookClass(Class class, SEL selector,
   
   if (status != FFI_OK) {
     AspectLuckySetError(error, NVMAspectErrorFailToAllocTrampoline,
-                        @"Fail to alloc ffi_closure for trampoline, this should really rare.");
+                        ClosureNote);
+    NSCAssert(NO, ClosureNote);
     return NO;
   }
   

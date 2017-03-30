@@ -12,6 +12,7 @@ typedef NS_ENUM(NSUInteger, NVMAspectErrorCode) {
   NVMAspectErrorMissingBlockSignature,
   NVMAspectErrorIncompatibleBlockSignature,
   NVMAspectErrorFailToAllocTrampoline,
+  NVMAspectErrorUnsupportArgumentType,
 };
 
 @interface NVMAspectInfo : NSObject

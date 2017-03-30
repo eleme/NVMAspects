@@ -10,6 +10,11 @@
 #import "Aspects.h"
 #import "Utils.h"
 
+static NSString *const SignatureNote = @""
+"Block's signature should compatible with method."
+"This means they have same return type,"
+"and block take a NVMAspectInfo as first argument, then other agrs pass to the method";
+
 @interface NVMAspectData ()
 
 @property (nonatomic, unsafe_unretained, readwrite) Class cls;
@@ -36,6 +41,7 @@
   NSMethodSignature *methodSignature = [cls instanceMethodSignatureForSelector:selector];
   if (methodSignature) {
     if (!IsCompatibleWithBlockSignature(methodSignature, blockSignature, error)) {
+      NSAssert(NO, SignatureNote);
       return nil;
     }
   } else {
