@@ -40,6 +40,11 @@
 
 @implementation NVMAspectInfo
 
+- (NSString *)description {
+  return [NSString stringWithFormat:@"Aspect info invocate with %@",
+          self.oriInvocation];
+}
+
 @end
 
 NSString *const NVMAspectErrorDomain = @"AspectErrorDomain";

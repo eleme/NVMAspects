@@ -56,6 +56,12 @@
   return data;
 }
 
+- (NSString *)description {
+  return [NSString stringWithFormat:@"Aspect data for selector:%@ in class %@",
+          NSStringFromSelector(self.selector),
+          self.cls];
+}
+
 // Block internals.
 typedef NS_OPTIONS(int, _BlockFlags) {
   BlockFlagsHasCopyDisposeHelpers = (1 << 25),
