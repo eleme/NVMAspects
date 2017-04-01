@@ -9,9 +9,18 @@
 #import "AppDelegate.h"
 @import NVMAspects;
 
+typedef struct _ComplexStruct {
+  int a;
+  double b;
+  CGRect c;
+  CFTypeRef d;
+} ComplexStruct;
+
 @interface AppDelegate ()
 
 @end
+
+typedef void(^ReturnedBlock)(void);
 
 @interface AppDelegate (NotImp)
 
@@ -20,7 +29,6 @@
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [self nvm_hookInstanceMethod:@selector(methodReturnVoid)
@@ -62,14 +70,31 @@
                       NSLog(@"Hooked methodWithoutImplement");
                     } error:NULL];
   
-//  [self nvm_hookInstanceMethod:@selector(methodReturnRect)
-//                    usingBlock:^CGRect(NVMAspectInfo *info){
-//                      NSLog(@"Hooked methodReturnRect");
-//                      [info.oriInvocation invoke];
-//                      CGRect rect;
-//                      [info.oriInvocation getReturnValue:&rect];
-//                      return rect;
-//                    } error:NULL];
+  [self nvm_hookInstanceMethod:@selector(methodReturnArray)
+                    usingBlock:^NSArray *(void) {
+                      NSLog(@"Hooked methodReturnArray");
+                      return nil;
+                    } error:NULL];
+  
+  [self nvm_hookInstanceMethod:@selector(methodReturnBlock)
+                    usingBlock:^ReturnedBlock (NVMAspectInfo *info) {
+                      NSLog(@"Hooked methodReturnBlock");
+                      return nil;
+                    } error:NULL];
+  
+  [self nvm_hookInstanceMethod:@selector(methodReturnRect)
+                    usingBlock:^CGRect(NVMAspectInfo *info){
+                      NSLog(@"Hooked methodReturnRect");
+                      [info.oriInvocation invoke];
+                      CGRect rect;
+                      [info.oriInvocation getReturnValue:&rect];
+                      return rect;
+                    } error:NULL];
+  [self nvm_hookInstanceMethod:@selector(methodHandleComplexStruct:)
+                    usingBlock:^ComplexStruct (NVMAspectInfo *info, ComplexStruct cStruct) {
+                      NSLog(@"Hooked methodHandleComplexStruct:");
+                      return cStruct;
+                    } error:NULL];
   
   [self methodReturnVoid];
   
@@ -80,9 +105,30 @@
   
   [self methodWithoutImplement];
   
+  [self methodReturnRect];
+  
+  [self methodReturnBlock];
+  
   [self methodReturnORIObject];
   
+  [self methodReturnArray];
+  
+  [self methodReturnBlock];
+  
+  ComplexStruct cStruct;
+  [self methodHandleComplexStruct:cStruct];
+  
   return YES;
+}
+
+- (ReturnedBlock)methodReturnBlock {
+  NSLog(@"methodReturnBlock");
+  return nil;
+}
+
+- (NSArray *)methodReturnArray {
+  NSLog(@"methodReturnArray");
+  return nil;
 }
 
 - (void)methodReturnVoid {
@@ -107,6 +153,11 @@
 - (CGRect)methodReturnRect {
   NSLog(@"ORI methodReturnRect");
   return CGRectMake(random(), random(), random(), random());
+}
+
+- (ComplexStruct)methodHandleComplexStruct:(ComplexStruct)cStruct {
+  NSLog(@"ORI methodHandleComplexStruct");
+  return cStruct;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
