@@ -19,6 +19,8 @@ typedef NS_ENUM(NSUInteger, NVMAspectErrorCode) {
 
 @property (nonatomic, unsafe_unretained) id slf;
 @property (nonatomic, assign) SEL selector;
+
+// oriInvocation will be nil, when class does not imp selector
 @property (nonatomic, strong) NSInvocation *oriInvocation;
 
 @end

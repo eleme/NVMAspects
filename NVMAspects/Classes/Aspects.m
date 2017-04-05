@@ -54,10 +54,13 @@ static void MessageInterpreter(ffi_cif *cif, void *ret,
   NVMAspectData *data = (__bridge NVMAspectData *)userdata;
   NSUInteger numberOfArguments = data.blockSignature.numberOfArguments;
   
-  NVMAspectInvocation *methodInvocation = (id)[NVMAspectInvocation invocationWithMethodSignature:data.methodSignature];
-  methodInvocation.imp = data.oriIMP;
-  for (NSUInteger idx = 0; idx < numberOfArguments; idx++) {
-    [methodInvocation setArgument:args[idx] atIndex:idx];
+  NVMAspectInvocation *methodInvocation = nil;
+  if (data.oriIMP) {
+    methodInvocation = (id)[NVMAspectInvocation invocationWithMethodSignature:data.methodSignature];
+    methodInvocation.imp = data.oriIMP;
+    for (NSUInteger idx = 0; idx < numberOfArguments; idx++) {
+      [methodInvocation setArgument:args[idx] atIndex:idx];
+    }
   }
   
   NVMAspectInfo *info = [NVMAspectInfo new];
