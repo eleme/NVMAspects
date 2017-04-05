@@ -8,7 +8,7 @@
 
 #import "Aspects.h"
 #import <objc/runtime.h>
-#import <libffi-iOS/ffi.h>
+#import "ffi.h"
 #import <pthread/pthread.h>
 #import "AspectData.h"
 #import "Utils.h"

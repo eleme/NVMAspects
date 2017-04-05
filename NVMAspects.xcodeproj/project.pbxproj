@@ -18,6 +18,18 @@
 		CB0338A81E8A8AC4004C2909 /* AspectData.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0338A61E8A8AC4004C2909 /* AspectData.m */; };
 		CB0338AB1E8A9396004C2909 /* Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = CB0338A91E8A9396004C2909 /* Utils.h */; };
 		CB0338AC1E8A9396004C2909 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0338AA1E8A9396004C2909 /* Utils.m */; };
+		CBBA3B1A1E94BE6200646892 /* ffi.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B0E1E94BE6200646892 /* ffi.h */; };
+		CBBA3B1B1E94BE6200646892 /* ffi_arm.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B0F1E94BE6200646892 /* ffi_arm.h */; };
+		CBBA3B1C1E94BE6200646892 /* ffi_arm64.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B101E94BE6200646892 /* ffi_arm64.h */; };
+		CBBA3B1D1E94BE6200646892 /* ffi_common.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B111E94BE6200646892 /* ffi_common.h */; };
+		CBBA3B1E1E94BE6200646892 /* ffi_i386.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B121E94BE6200646892 /* ffi_i386.h */; };
+		CBBA3B1F1E94BE6200646892 /* ffi_x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B131E94BE6200646892 /* ffi_x86_64.h */; };
+		CBBA3B201E94BE6200646892 /* ffitarget.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B141E94BE6200646892 /* ffitarget.h */; };
+		CBBA3B211E94BE6200646892 /* ffitarget_arm.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B151E94BE6200646892 /* ffitarget_arm.h */; };
+		CBBA3B221E94BE6200646892 /* ffitarget_arm64.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B161E94BE6200646892 /* ffitarget_arm64.h */; };
+		CBBA3B231E94BE6200646892 /* ffitarget_i386.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B171E94BE6200646892 /* ffitarget_i386.h */; };
+		CBBA3B241E94BE6200646892 /* ffitarget_x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B181E94BE6200646892 /* ffitarget_x86_64.h */; };
+		CBBA3B251E94BE6200646892 /* libffi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBBA3B191E94BE6200646892 /* libffi.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +60,18 @@
 		CB0338A61E8A8AC4004C2909 /* AspectData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AspectData.m; sourceTree = "<group>"; };
 		CB0338A91E8A9396004C2909 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		CB0338AA1E8A9396004C2909 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		CBBA3B0E1E94BE6200646892 /* ffi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi.h; sourceTree = "<group>"; };
+		CBBA3B0F1E94BE6200646892 /* ffi_arm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi_arm.h; sourceTree = "<group>"; };
+		CBBA3B101E94BE6200646892 /* ffi_arm64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi_arm64.h; sourceTree = "<group>"; };
+		CBBA3B111E94BE6200646892 /* ffi_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi_common.h; sourceTree = "<group>"; };
+		CBBA3B121E94BE6200646892 /* ffi_i386.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi_i386.h; sourceTree = "<group>"; };
+		CBBA3B131E94BE6200646892 /* ffi_x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi_x86_64.h; sourceTree = "<group>"; };
+		CBBA3B141E94BE6200646892 /* ffitarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffitarget.h; sourceTree = "<group>"; };
+		CBBA3B151E94BE6200646892 /* ffitarget_arm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffitarget_arm.h; sourceTree = "<group>"; };
+		CBBA3B161E94BE6200646892 /* ffitarget_arm64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffitarget_arm64.h; sourceTree = "<group>"; };
+		CBBA3B171E94BE6200646892 /* ffitarget_i386.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffitarget_i386.h; sourceTree = "<group>"; };
+		CBBA3B181E94BE6200646892 /* ffitarget_x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffitarget_x86_64.h; sourceTree = "<group>"; };
+		CBBA3B191E94BE6200646892 /* libffi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libffi.a; sourceTree = "<group>"; };
 		F601EE001E6FE931A94358BF /* Pods-NVMAspectsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NVMAspectsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NVMAspectsTests/Pods-NVMAspectsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B6EB8ED61425EFD84BB410 /* Pods_NVMAspects.framework in Frameworks */,
+				CBBA3B251E94BE6200646892 /* libffi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +140,7 @@
 		AD908CCC1D6C27FC00AF2F48 /* NVMAspects */ = {
 			isa = PBXGroup;
 			children = (
+				CBBA3B0D1E94BE6200646892 /* libffi */,
 				ADD9C84D1D6C375600A441E3 /* Classes */,
 				ADD9C84E1D6C378100A441E3 /* Assets */,
 				AD908CCD1D6C27FC00AF2F48 /* NVMAspects.h */,
@@ -152,6 +178,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CBBA3B0D1E94BE6200646892 /* libffi */ = {
+			isa = PBXGroup;
+			children = (
+				CBBA3B0E1E94BE6200646892 /* ffi.h */,
+				CBBA3B0F1E94BE6200646892 /* ffi_arm.h */,
+				CBBA3B101E94BE6200646892 /* ffi_arm64.h */,
+				CBBA3B111E94BE6200646892 /* ffi_common.h */,
+				CBBA3B121E94BE6200646892 /* ffi_i386.h */,
+				CBBA3B131E94BE6200646892 /* ffi_x86_64.h */,
+				CBBA3B141E94BE6200646892 /* ffitarget.h */,
+				CBBA3B151E94BE6200646892 /* ffitarget_arm.h */,
+				CBBA3B161E94BE6200646892 /* ffitarget_arm64.h */,
+				CBBA3B171E94BE6200646892 /* ffitarget_i386.h */,
+				CBBA3B181E94BE6200646892 /* ffitarget_x86_64.h */,
+				CBBA3B191E94BE6200646892 /* libffi.a */,
+			);
+			path = libffi;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -160,9 +205,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB0338A71E8A8AC4004C2909 /* AspectData.h in Headers */,
+				CBBA3B231E94BE6200646892 /* ffitarget_i386.h in Headers */,
 				CB03389F1E8A7768004C2909 /* Aspects.h in Headers */,
+				CBBA3B1C1E94BE6200646892 /* ffi_arm64.h in Headers */,
+				CBBA3B1F1E94BE6200646892 /* ffi_x86_64.h in Headers */,
+				CBBA3B201E94BE6200646892 /* ffitarget.h in Headers */,
+				CBBA3B1E1E94BE6200646892 /* ffi_i386.h in Headers */,
+				CBBA3B1A1E94BE6200646892 /* ffi.h in Headers */,
+				CBBA3B241E94BE6200646892 /* ffitarget_x86_64.h in Headers */,
+				CBBA3B221E94BE6200646892 /* ffitarget_arm64.h in Headers */,
+				CBBA3B1B1E94BE6200646892 /* ffi_arm.h in Headers */,
+				CBBA3B211E94BE6200646892 /* ffitarget_arm.h in Headers */,
 				CB0338AB1E8A9396004C2909 /* Utils.h in Headers */,
 				AD908CCE1D6C27FC00AF2F48 /* NVMAspects.h in Headers */,
+				CBBA3B1D1E94BE6200646892 /* ffi_common.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +565,10 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NVMAspects/libffi",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.ele.ios.NVMAspects;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -528,6 +588,10 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NVMAspects/libffi",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.ele.ios.NVMAspects;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

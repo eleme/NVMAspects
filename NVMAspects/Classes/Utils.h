@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <libffi-iOS/ffi.h>
+#import "ffi.h"
 
 extern ffi_type * ffiTypeFromEncodingChar(const char *c);
 
