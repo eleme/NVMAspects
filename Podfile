@@ -15,7 +15,7 @@ def declare_pods_from_podspec
 end
 
 def declare_pods
-  pod  'libffi-iOS'
+                      
 end
 
 target 'NVMAspects' do

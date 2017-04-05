@@ -37,6 +37,5 @@ Pod::Spec.new do |s|
   s.public_header_files = ['NVMAspects/NVMAspects.h', 'NVMAspects/Classes/Aspects.h']
   
   s.frameworks = 'Foundation'
-  s.dependency 'libffi-iOS'
   
 end

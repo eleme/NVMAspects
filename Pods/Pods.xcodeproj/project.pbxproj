@@ -21,28 +21,21 @@
 /* Begin PBXFileReference section */
 		066CA2E9244A1888AF712701972BF0B2 /* Pods-NVMAspectsTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NVMAspectsTests-frameworks.sh"; sourceTree = "<group>"; };
 		06F6CB486C62C40532E18BE0FB2DFB3A /* Pods-NVMAspectsDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NVMAspectsDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		0FED088423E217E5C1A67138212CA110 /* ffitarget_arm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffitarget_arm.h; path = libffi/ffitarget_arm.h; sourceTree = "<group>"; };
-		17873FF39104C38689FEC0FEFF6E1D6C /* ffi_i386.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi_i386.h; path = libffi/ffi_i386.h; sourceTree = "<group>"; };
 		1A83925E678F8218FF3E3B8B49BF8688 /* Pods-NVMAspectsDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NVMAspectsDemo-resources.sh"; sourceTree = "<group>"; };
 		1BBC5E6DD3804DB759C85C1E72348428 /* Pods-NVMAspects-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NVMAspects-acknowledgements.plist"; sourceTree = "<group>"; };
 		1BD0DC9ACD30A2988B0AA5A88BBAC60A /* Pods_NVMAspectsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NVMAspectsDemo.framework; path = "Pods-NVMAspectsDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2117B1ED876B12115AD86E7EA5AC89C4 /* Pods-NVMAspectsDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NVMAspectsDemo-dummy.m"; sourceTree = "<group>"; };
 		224DCDAF08BF00FD2202EE426B82C9DE /* Pods-NVMAspects-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NVMAspects-umbrella.h"; sourceTree = "<group>"; };
 		23F2E663F9F26FEF1BFCCD3732883B7D /* Pods-NVMAspects.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NVMAspects.debug.xcconfig"; sourceTree = "<group>"; };
-		28992E3C5BC616590217CFAB99EFB6ED /* libffi.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libffi.a; path = libffi/libffi.a; sourceTree = "<group>"; };
 		29D0688921D0B0CBA7318140D74528D4 /* Pods-NVMAspectsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NVMAspectsTests.release.xcconfig"; sourceTree = "<group>"; };
-		2B6A4E023A581CA7998F356EE65483AD /* ffi_common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi_common.h; path = libffi/ffi_common.h; sourceTree = "<group>"; };
 		3B12E4B353DBFE76BABD74D4C700135E /* Pods_NVMAspectsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NVMAspectsTests.framework; path = "Pods-NVMAspectsTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41EF51FF43E1FA7FB36C65842707F27F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49B4038C689B64D8D97CB99EEE279218 /* Pods-NVMAspectsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NVMAspectsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		519497C6F5234CC6BE4BE5800FFBAE96 /* Pods-NVMAspects-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NVMAspects-dummy.m"; sourceTree = "<group>"; };
-		53F9D2DE9BB5A19895FE7035D9C5F543 /* ffitarget_x86_64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffitarget_x86_64.h; path = libffi/ffitarget_x86_64.h; sourceTree = "<group>"; };
 		5500F601E6778D431F489F9CAB5D2750 /* Pods_NVMAspects.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NVMAspects.framework; path = "Pods-NVMAspects.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55023C38D705B3FBA03D5EDF11ECB43B /* Pods-NVMAspects-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NVMAspects-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5869B7F1DAB12EF65636C61D63B4EE6F /* Pods-NVMAspects-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NVMAspects-resources.sh"; sourceTree = "<group>"; };
 		5BC0D971B0F322CBDEBAD727CD8AC49F /* Pods-NVMAspectsDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NVMAspectsDemo-frameworks.sh"; sourceTree = "<group>"; };
-		6058D62B6BB6744D262146C11B4C74A4 /* ffi_arm64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi_arm64.h; path = libffi/ffi_arm64.h; sourceTree = "<group>"; };
-		63513DA8422AD4F8C904EAD538BA474D /* ffitarget.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffitarget.h; path = libffi/ffitarget.h; sourceTree = "<group>"; };
 		67B453DAD7FBEB97EA841BB472DE6763 /* Pods-NVMAspectsTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NVMAspectsTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		70259754491F052DBF01E06473E59400 /* Pods-NVMAspectsDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-NVMAspectsDemo.modulemap"; sourceTree = "<group>"; };
 		8D3A3E64FA60E60A4FC34ED72D49272A /* Pods-NVMAspects.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NVMAspects.release.xcconfig"; sourceTree = "<group>"; };
@@ -52,19 +45,14 @@
 		9DEF213CF6FB0C2DFA3E407481C83517 /* Pods-NVMAspectsTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NVMAspectsTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A5C4A8255F8249C67840955943754EC8 /* Pods-NVMAspectsDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NVMAspectsDemo-umbrella.h"; sourceTree = "<group>"; };
 		A98B65E127F4BCAF8A2457B2CAC75888 /* Pods-NVMAspectsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NVMAspectsDemo.release.xcconfig"; sourceTree = "<group>"; };
-		AFB7BFC3BAA94DF63E784EEA9D56C36E /* ffitarget_i386.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffitarget_i386.h; path = libffi/ffitarget_i386.h; sourceTree = "<group>"; };
 		CA2901AB422DE5475058B33B78945CEF /* Pods-NVMAspectsTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NVMAspectsTests-umbrella.h"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CC0A312A4E10A96DE2D3A0A9B5E7D9A6 /* ffi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi.h; path = libffi/ffi.h; sourceTree = "<group>"; };
 		CD13DB003B9B63AB075D0FC4E3ABBD13 /* Pods-NVMAspectsDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NVMAspectsDemo-acknowledgements.plist"; sourceTree = "<group>"; };
-		DD3BD06430D0347C8786ECB2654D97FC /* ffitarget_arm64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffitarget_arm64.h; path = libffi/ffitarget_arm64.h; sourceTree = "<group>"; };
-		DDED99D9D56E8079DC28501D3D91364C /* ffi_arm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi_arm.h; path = libffi/ffi_arm.h; sourceTree = "<group>"; };
 		DFC0E962EF22B51C12FBACF9468DB8AF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA2F741FCC2B5BF7386311C79CEDD342 /* Pods-NVMAspects.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-NVMAspects.modulemap"; sourceTree = "<group>"; };
 		F56768ED956079B71E12F38FDED3CF67 /* Pods-NVMAspectsTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-NVMAspectsTests.modulemap"; sourceTree = "<group>"; };
 		FCDA2A5A56D1EAFDA414E6536D3EC74A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE81F8A0F56793BC4D328DAFAAA7FEE8 /* Pods-NVMAspectsTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NVMAspectsTests-dummy.m"; sourceTree = "<group>"; };
-		FFB1B9A2994B5943043BF733B2E83EFD /* ffi_x86_64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi_x86_64.h; path = libffi/ffi_x86_64.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,34 +83,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3942CBD575846D25D913DD3C555CDDA1 /* libffi-iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CC0A312A4E10A96DE2D3A0A9B5E7D9A6 /* ffi.h */,
-				DDED99D9D56E8079DC28501D3D91364C /* ffi_arm.h */,
-				6058D62B6BB6744D262146C11B4C74A4 /* ffi_arm64.h */,
-				2B6A4E023A581CA7998F356EE65483AD /* ffi_common.h */,
-				17873FF39104C38689FEC0FEFF6E1D6C /* ffi_i386.h */,
-				FFB1B9A2994B5943043BF733B2E83EFD /* ffi_x86_64.h */,
-				63513DA8422AD4F8C904EAD538BA474D /* ffitarget.h */,
-				0FED088423E217E5C1A67138212CA110 /* ffitarget_arm.h */,
-				DD3BD06430D0347C8786ECB2654D97FC /* ffitarget_arm64.h */,
-				AFB7BFC3BAA94DF63E784EEA9D56C36E /* ffitarget_i386.h */,
-				53F9D2DE9BB5A19895FE7035D9C5F543 /* ffitarget_x86_64.h */,
-				72959C8DFB63E4516E6FD8FD685A74BA /* Frameworks */,
-			);
-			name = "libffi-iOS";
-			path = "libffi-iOS";
-			sourceTree = "<group>";
-		};
-		72959C8DFB63E4516E6FD8FD685A74BA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				28992E3C5BC616590217CFAB99EFB6ED /* libffi.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +113,6 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				C60C6149D60586E8697C3EFD1605B787 /* Pods */,
 				9AA6E81C75FB1417B149A30C0E3317A6 /* Products */,
 				F76F4784BF5BBE669AAC6C9374AD83F5 /* Targets Support Files */,
 			);
@@ -211,14 +170,6 @@
 				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C60C6149D60586E8697C3EFD1605B787 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3942CBD575846D25D913DD3C555CDDA1 /* libffi-iOS */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		F76F4784BF5BBE669AAC6C9374AD83F5 /* Targets Support Files */ = {
