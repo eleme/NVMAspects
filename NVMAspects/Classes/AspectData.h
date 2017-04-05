@@ -21,7 +21,7 @@
 
 @property (nonatomic, assign) BOOL hasNoReturnValue;
 
-@property (nonatomic, assign, readonly) IMP oriIMP;
+@property (nonatomic, assign) IMP oriIMP;
 
 @property (nonatomic, copy, readonly) id impBlock;
 @property (nonatomic, strong, readonly) NSMethodSignature *blockSignature;

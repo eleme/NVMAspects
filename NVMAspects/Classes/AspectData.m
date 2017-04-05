@@ -21,8 +21,6 @@ static NSString *const SignatureNote = @""
 @property (nonatomic, assign, readwrite) SEL selector;
 @property (nonatomic, strong, readwrite) NSMethodSignature *methodSignature;
 
-@property (nonatomic, assign, readwrite) IMP oriIMP;
-
 @property (nonatomic, copy, readwrite) id impBlock;
 @property (nonatomic, strong, readwrite) NSMethodSignature *blockSignature;
 

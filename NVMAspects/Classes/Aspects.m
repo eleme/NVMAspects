@@ -9,6 +9,7 @@
 #import "Aspects.h"
 #import <objc/runtime.h>
 #import <libffi-iOS/ffi.h>
+#import <pthread/pthread.h>
 #import "AspectData.h"
 #import "Utils.h"
 
@@ -84,6 +85,21 @@ static void MessageInterpreter(ffi_cif *cif, void *ret,
   data = nil;
 }
 
+typedef void(^WorkBlock)(void);
+static inline void PerformBlockInGlobalLock(WorkBlock block) {
+  static pthread_mutex_t lock;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    pthread_mutex_init(&lock, NULL);
+  });
+  
+  pthread_mutex_lock(&lock);
+  if (block) {
+    block();
+  }
+  pthread_mutex_unlock(&lock);
+}
+
 static NSString *CifNote = @"Fail to alloc ffi_cif for trampoline, this should really rare.";
 static NSString *ClosureNote = @"Fail to alloc ffi_closure for trampoline, this should really rare.";
 static NSString *UnsupportNote = @"Encounter a unsupport type, contact the author";
@@ -143,13 +159,16 @@ static inline BOOL HookClass(Class class, SEL selector,
     return NO;
   }
   
-  Method method = class_getInstanceMethod(class, selector);
-  if (method) {
-    method_setImplementation(method, newIMP);
-  } else {
-    class_addMethod(class, selector, newIMP,
-                    MethodTypesFromSignature(methodSignature).UTF8String);
-  }
+ PerformBlockInGlobalLock(^{
+   Method method = class_getInstanceMethod(class, selector);
+   data.oriIMP = method_getImplementation(method);
+   if (method) {
+     method_setImplementation(method, newIMP);
+   } else {
+     class_addMethod(class, selector, newIMP,
+                     MethodTypesFromSignature(methodSignature).UTF8String);
+   }
+ });
   
   return YES;
 }
