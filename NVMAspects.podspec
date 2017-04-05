@@ -28,7 +28,8 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = ['NVMAspects/Classes/**/*', 'NVMAspects/NVMAspects.h']
+  s.source_files = ['NVMAspects/Classes/**/*', 'NVMAspects/NVMAspects.h', 'NVMAspects/libffi/*.h']
+  s.vendored_library = 'NVMAspects/libffi/libffi.a'
 
   # s.resource_bundles = {
   #   'NVMAspects' => ['NVMAspects/Assets/NVMAspects.bundle/**/*']
