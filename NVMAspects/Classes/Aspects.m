@@ -65,8 +65,9 @@ static void MessageInterpreter(ffi_cif *cif, void *ret,
   }
   
   NVMAspectInfo *info = [NVMAspectInfo new];
-  info.slf = methodInvocation.target;
-  info.selector = info.selector;
+  void **slfLocation = args[0];
+  info.slf = (__bridge id)(*slfLocation);
+  info.selector = data.selector;
   info.oriInvocation = methodInvocation;
   
   NSInvocation *blockInvocation = [NSInvocation invocationWithMethodSignature:data.blockSignature];

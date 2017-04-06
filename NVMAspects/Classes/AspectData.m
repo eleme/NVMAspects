@@ -37,13 +37,13 @@ static NSString *const SignatureNote = @""
     return nil;
   }
   NSMethodSignature *methodSignature = [cls instanceMethodSignatureForSelector:selector];
-  if (methodSignature) {
-    if (!IsCompatibleWithBlockSignature(methodSignature, blockSignature, error)) {
-      NSAssert(NO, SignatureNote);
-      return nil;
-    }
-  } else {
+  if (!methodSignature) {
     methodSignature = MethodSignatureFromBlockSignature(blockSignature);
+  }
+  
+  if (!IsCompatibleWithBlockSignature(methodSignature, blockSignature, error)) {
+    NSAssert(NO, SignatureNote);
+    return nil;
   }
   
   NVMAspectData *data = [NVMAspectData new];
@@ -160,7 +160,7 @@ static NSMethodSignature *MethodSignatureFromBlockSignature(NSMethodSignature *b
   NSMutableString *sig = [NSMutableString stringWithFormat:@"%s%s%s", blockSignature.methodReturnType, @encode(id), @encode(SEL)];
   for (NSInteger step = 2; step < blockSignature.numberOfArguments; step++) {
     NSString *argType = [NSString stringWithUTF8String:[blockSignature getArgumentTypeAtIndex:step]];
-    [sig stringByAppendingString:argType];
+    [sig appendString:argType];
   }
   return [NSMethodSignature signatureWithObjCTypes:sig.UTF8String];
 }
