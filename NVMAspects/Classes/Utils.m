@@ -10,19 +10,30 @@
 #import <objc/runtime.h>
 #import "Aspects.h"
 
-static inline ffi_type *ffiTypeFromStructEncodingChar(const char *c) {
+static inline ffi_type ** elementsInStructsForEncodingChar(const char *encoding);
+static inline ffi_type *ffiTypeForStructEncodingChar(const char *c);
+
+// Struct encoding is a magic.
+static inline ffi_type *ffiTypeForStructEncodingChar(const char *c) {
   NSUInteger size = 0;
   NSUInteger align = 0;
   NSGetSizeAndAlignment(c, &size, &align);
+  ffi_type **elements = elementsInStructsForEncodingChar(c);
+  if (size && elements == NULL) {
+    NSCAssert(NO, @"should have elements");
+    return NULL;
+  }
+  
   ffi_type *structType = malloc(sizeof(ffi_type));
-  structType->alignment = align;
-  structType->size = size;
+  structType->alignment = 0;
+  structType->size = 0;
   structType->type = FFI_TYPE_STRUCT;
+  structType->elements = elementsInStructsForEncodingChar(c);
   
   return structType;
 }
 
-ffi_type * ffiTypeFromPrimitiveEncodingChar(const char *c) {
+ffi_type * ffiTypeForPrimitiveEncodingChar(const char *c) {
   if (!c || !strlen(c)) {
     return NULL;
   }
@@ -64,12 +75,52 @@ ffi_type * ffiTypeFromPrimitiveEncodingChar(const char *c) {
       return &ffi_type_void;
     case _C_PTR:
       return &ffi_type_pointer;
-    case _C_STRUCT_B:{
-      return ffiTypeFromStructEncodingChar(c);
-    }
   }
   
   return NULL;
+}
+
+static char const *whereStructElementStart(char const *encoding) {
+  // struct encoding is like this:"{CGRect={CGPoint=dd}{CGSize=dd}}"
+  // so first element is after '='
+  while (encoding[0] != '=') {
+    encoding++; // trim to =
+  }
+  encoding++;   //trim =
+  
+  return encoding;
+}
+
+static inline ffi_type ** elementsInStructsForEncodingChar(const char *encoding) {
+  encoding = whereStructElementStart(encoding);
+  
+  NSPointerArray *array = [NSPointerArray pointerArrayWithOptions:NSPointerFunctionsOpaqueMemory];
+  while (encoding[0] != _C_STRUCT_E) {
+    const char *start = encoding;
+    const char *end = NSGetSizeAndAlignment(start, NULL, NULL);
+    ffi_type *type = NULL;
+    if (start[0] == _C_STRUCT_B) {
+      type = ffiTypeForStructEncodingChar(start);
+    } else {
+      type = ffiTypeForPrimitiveEncodingChar(start);
+    }
+    
+    NSCAssert(type, @"should have a type");
+    if (!type) {
+      return NULL;
+    }
+    
+    [array addPointer:type];
+    encoding = end;
+  }
+  
+  NSInteger typeCount = array.count;
+  ffi_type **types = calloc(typeCount + 1, sizeof(void *));
+  for (NSUInteger step = 0; step < typeCount; step++) {
+    types[step] = [array pointerAtIndex:step];
+  }
+  
+  return types;
 }
 
 const char *trimedEncodingChar(const char *c) {
@@ -86,8 +137,10 @@ ffi_type * ffiTypeFromEncodingChar(const char *c) {
     return NULL;
   }
   c = trimedEncodingChar(c);
-  
-  return ffiTypeFromPrimitiveEncodingChar(c);
+  if (c[0] == _C_STRUCT_B) {
+    return ffiTypeForStructEncodingChar(c);
+  }
+  return ffiTypeForPrimitiveEncodingChar(c);
 }
 
 void AspectLuckySetError(NSError **error, NSInteger code, NSString *description) {

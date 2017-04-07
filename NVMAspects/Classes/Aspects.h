@@ -32,6 +32,7 @@ extern NSString *const NVMAspectErrorDomain;
 + (BOOL)nvm_hookInstanceMethod:(SEL)selector
                     usingBlock:(id)block
                          error:(NSError **)error;
+
 + (BOOL)nvm_hookClassMethod:(SEL)selector
                  usingBlock:(id)block
                       error:(NSError **)error;
@@ -39,6 +40,7 @@ extern NSString *const NVMAspectErrorDomain;
 - (BOOL)nvm_hookInstanceMethod:(SEL)selector
                     usingBlock:(id)block
                          error:(NSError **)error;
+
 - (BOOL)nvm_hookClassMethod:(SEL)selector
                  usingBlock:(id)block
                       error:(NSError **)error;

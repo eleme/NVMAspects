@@ -102,7 +102,7 @@ static inline void PerformBlockInGlobalLock(WorkBlock block) {
 }
 
 static NSString *CifNote = @"Fail to alloc ffi_cif for trampoline, this should really rare.";
-static NSString *ClosureNote = @"Fail to alloc ffi_closure for trampoline, this should really rare.";
+static NSString *ClosureNote = @"Fail to alloc ffi_closure for trampoline, this should be really rare.";
 static NSString *UnsupportNote = @"Encounter a unsupport type, contact the author";
 
 static inline BOOL HookClass(Class class, SEL selector,

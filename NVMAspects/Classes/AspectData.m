@@ -117,33 +117,25 @@ static BOOL IsCompatibleWithBlockSignature(NSMethodSignature *methodSignature,
   NSCParameterAssert(blockSignature);
   NSCParameterAssert(methodSignature);
   
-  BOOL signaturesMatch = YES;
-  if (blockSignature.numberOfArguments > methodSignature.numberOfArguments) {
-    signaturesMatch = NO;
-  }else {
-    if (blockSignature.numberOfArguments > 1) {
-      const char *blockType = [blockSignature getArgumentTypeAtIndex:1];
-      if (blockType[0] != '@') {
-        signaturesMatch = NO;
-      }
-    }
-    
-    if (signaturesMatch) {
-      if (!MethodTypeMatch([methodSignature methodReturnType],
-                           [blockSignature methodReturnType])) {
-        signaturesMatch = NO;
-      }
-    }
-    
-    // Argument 0 is self/block, argument 1 is SEL or id<AspectInfo>. We start comparing at argument 2.
-    // The block can have less arguments than the method, that's ok.
-    if (signaturesMatch) {
-      for (NSUInteger idx = 2; idx < blockSignature.numberOfArguments; idx++) {
-        // Only compare parameter, not the optional type data.
-        if (!MethodTypeMatch([methodSignature getArgumentTypeAtIndex:idx],
-                             [blockSignature getArgumentTypeAtIndex:idx])) {
-          signaturesMatch = NO; break;
-        }
+  BOOL signaturesMatch = (blockSignature.numberOfArguments == methodSignature.numberOfArguments &&
+                          blockSignature.numberOfArguments >= 2);
+  if (signaturesMatch) {
+    const char *blockType = [blockSignature getArgumentTypeAtIndex:1];
+    signaturesMatch = MethodTypeMatch(blockType, "@");
+  }
+  
+  if (signaturesMatch) {
+    signaturesMatch = MethodTypeMatch([methodSignature methodReturnType],
+                                      [blockSignature methodReturnType]);
+  }
+  
+  if (signaturesMatch) {
+    for (NSUInteger idx = 2; idx < blockSignature.numberOfArguments; idx++) {
+      // Only compare parameter, not the optional type data.
+      signaturesMatch = MethodTypeMatch([methodSignature getArgumentTypeAtIndex:idx],
+                                        [blockSignature getArgumentTypeAtIndex:idx]);
+      if (!signaturesMatch) {
+        break;
       }
     }
   }
@@ -151,9 +143,9 @@ static BOOL IsCompatibleWithBlockSignature(NSMethodSignature *methodSignature,
   if (!signaturesMatch) {
     NSString *description = [NSString stringWithFormat:@"Block signature %@ doesn't match %@.", blockSignature, methodSignature];
     AspectLuckySetError(error, NVMAspectErrorIncompatibleBlockSignature, description);
-    return NO;
   }
-  return YES;
+  
+  return signaturesMatch;
 }
 
 static NSMethodSignature *MethodSignatureFromBlockSignature(NSMethodSignature *blockSignature) {
