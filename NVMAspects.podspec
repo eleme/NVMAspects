@@ -39,4 +39,5 @@ Pod::Spec.new do |s|
   
   s.frameworks = 'Foundation'
   
+  s.spec.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO' }
 end
