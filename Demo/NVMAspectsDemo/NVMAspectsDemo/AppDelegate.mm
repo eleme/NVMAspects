@@ -34,7 +34,7 @@ typedef void(^NormalBlock)(void);
   
   NSObject *object = [NSObject new];
   [self nvm_hookInstanceMethod:@selector(methodReturnHookedObject)
-                    usingBlock:^(NVMAspectInfo *info){
+                    usingBlock:^id (NVMAspectInfo *info){
                       [info.oriInvocation invoke];
                       NSLog(@"Hooked methodReturnObject");
                       return object;

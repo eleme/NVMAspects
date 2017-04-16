@@ -119,14 +119,19 @@ static BOOL IsCompatibleWithBlockSignature(NSMethodSignature *methodSignature,
   
   BOOL signaturesMatch = (blockSignature.numberOfArguments == methodSignature.numberOfArguments &&
                           blockSignature.numberOfArguments >= 2);
+  NSCAssert(signaturesMatch, nil);
+  
   if (signaturesMatch) {
-    const char *blockType = [blockSignature getArgumentTypeAtIndex:1];
-    signaturesMatch = MethodTypeMatch(blockType, "@");
+    signaturesMatch = MethodTypeMatch([blockSignature getArgumentTypeAtIndex:1],
+                                      @encode(NVMAspectInfo *));
+    
+    NSCAssert(signaturesMatch, nil);
   }
   
   if (signaturesMatch) {
     signaturesMatch = MethodTypeMatch([methodSignature methodReturnType],
                                       [blockSignature methodReturnType]);
+    NSCAssert(signaturesMatch, nil);
   }
   
   if (signaturesMatch) {
@@ -135,6 +140,7 @@ static BOOL IsCompatibleWithBlockSignature(NSMethodSignature *methodSignature,
       signaturesMatch = MethodTypeMatch([methodSignature getArgumentTypeAtIndex:idx],
                                         [blockSignature getArgumentTypeAtIndex:idx]);
       if (!signaturesMatch) {
+        NSCAssert(signaturesMatch, nil);
         break;
       }
     }

@@ -151,9 +151,30 @@ void AspectLuckySetError(NSError **error, NSInteger code, NSString *description)
   }
 }
 
-BOOL MethodTypeMatch(const char *type, const char *otherType) {
-  return type && otherType && type[0] == otherType[0];
+static inline bool isExtraEncoding(char encoding) {
+  return encoding == '"' || encoding == '<';
 }
+
+BOOL MethodTypeMatch(const char *type, const char *otherType) {
+  unsigned long typeLen = strlen(type);
+  unsigned long otherTypeLen = strlen(otherType);
+  unsigned long minLen = MIN(typeLen, otherTypeLen);
+  
+  if (minLen == 0) {
+    return NO;
+  }
+  
+  bool equal = strncmp(type, otherType, minLen) == 0;
+  if (typeLen > minLen) {
+    equal = isExtraEncoding(type[minLen]);
+  }
+  if (otherTypeLen > minLen) {
+    equal = isExtraEncoding(otherType[minLen]);
+  }
+  
+  return equal;
+}
+
 
 NSString *MethodTypesFromSignature(NSMethodSignature *signature) {
   NSMutableString *string = [NSMutableString stringWithFormat:@"%s", signature.methodReturnType];
