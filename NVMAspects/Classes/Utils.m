@@ -33,7 +33,7 @@ static inline ffi_type *ffiTypeForStructEncodingChar(const char *c) {
   return structType;
 }
 
-ffi_type * ffiTypeForPrimitiveEncodingChar(const char *c) {
+static inline ffi_type * ffiTypeForPrimitiveEncodingChar(const char *c) {
   if (!c || !strlen(c)) {
     return NULL;
   }
@@ -80,7 +80,40 @@ ffi_type * ffiTypeForPrimitiveEncodingChar(const char *c) {
   return NULL;
 }
 
-static char const *startPositionForStructElement(char const *encoding) {
+ffi_type *ffiTypeForCArrayEncoding(char const *encoding) {
+  long len = strlen(encoding);
+  const char *primitiveTypeEncoding = NULL;
+  for (long position = len - 1; position >= 0; position--) {
+    if (encoding[position] >= '0' && encoding[position] <= '9') {
+      primitiveTypeEncoding = &encoding[position + 1];
+      break;
+    }
+  }
+  
+  ffi_type *primitiveType = ffiTypeForPrimitiveEncodingChar(primitiveTypeEncoding);
+  NSCAssert(primitiveType, nil);
+  
+  NSUInteger size = 0;
+  NSUInteger align = 0;
+  NSGetSizeAndAlignment(encoding, &size, &align);
+  ffi_type *cAarrayType = malloc(sizeof(ffi_type));
+  cAarrayType->size = size;
+  cAarrayType->alignment = align;
+  // use a struct to simulate a c array
+  cAarrayType->type = FFI_TYPE_STRUCT;
+  
+  NSInteger elementCount = size / primitiveType->size;
+  ffi_type **elements = malloc(sizeof(void *) *(elementCount + 1));
+  for (NSInteger index = 0; index < elementCount; index++) {
+    elements[index] = primitiveType;
+  }
+  elements[elementCount] = NULL;
+  
+  cAarrayType->elements = elements;
+  return cAarrayType;
+}
+
+static inline char const *startPositionForStructElement(char const *encoding) {
   // struct encoding is like this:"{CGRect={CGPoint=dd}{CGSize=dd}}"
   // so first element is after '='
   while (encoding[0] != '=') {
@@ -123,7 +156,7 @@ static inline ffi_type ** elementsInStructsForEncodingChar(const char *encoding)
   return types;
 }
 
-const char *trimedEncodingChar(const char *c) {
+static inline const char *trimedEncodingChar(const char *c) {
   NSCharacterSet *trimedEncodings = [NSCharacterSet characterSetWithCharactersInString:@"rnNoORV"];
   while ([trimedEncodings hasMemberInPlane:c[0]]) {
     // trim const and other in out identifier
@@ -175,7 +208,6 @@ BOOL MethodTypeMatch(const char *type, const char *otherType) {
   return equal;
 }
 
-
 NSString *MethodTypesFromSignature(NSMethodSignature *signature) {
   NSMutableString *string = [NSMutableString stringWithFormat:@"%s", signature.methodReturnType];
   for (NSInteger i = 0; i < signature.numberOfArguments; i++) {
@@ -183,3 +215,15 @@ NSString *MethodTypesFromSignature(NSMethodSignature *signature) {
   }
   return string;
 }
+
+@implementation NSObject (ST)
+
++ (void)load {
+  typedef char array[3][3];
+  NSUInteger size = 0;
+  NSUInteger align = 0;
+  NSGetSizeAndAlignment(@encode(array), &size, &align);
+  ffi_type *type = ffiTypeForCArrayEncoding(@encode(array));
+}
+
+@end

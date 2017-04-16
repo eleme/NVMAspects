@@ -20,6 +20,12 @@ typedef void(^NormalBlock)(void);
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  typedef char array[3][3];
+  NSUInteger size = 0;
+  NSUInteger align = 0;
+  NSGetSizeAndAlignment(@encode(array), &size, &align);
+  
+  
   [self nvm_hookInstanceMethod:@selector(methodReturnVoid)
                     usingBlock:^(NVMAspectInfo *info) {
                       [info.oriInvocation invoke];
