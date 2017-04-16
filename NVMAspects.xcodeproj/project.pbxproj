@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		13B6EB8ED61425EFD84BB410 /* Pods_NVMAspects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97120E88711A7A98B789C918 /* Pods_NVMAspects.framework */; };
 		818F8C85208819637160BFB7 /* Pods_NVMAspectsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762A1CA451B0B4CF473CFAD9 /* Pods_NVMAspectsTests.framework */; };
-		AD8BBB891D8FCB2C00886DC9 /* NVMAspectsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8BBB881D8FCB2C00886DC9 /* NVMAspectsTests.m */; };
 		AD8BBB8B1D8FCB2C00886DC9 /* NVMAspects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD908CCA1D6C27FC00AF2F48 /* NVMAspects.framework */; };
 		AD908CCE1D6C27FC00AF2F48 /* NVMAspects.h in Headers */ = {isa = PBXBuildFile; fileRef = AD908CCD1D6C27FC00AF2F48 /* NVMAspects.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB03389F1E8A7768004C2909 /* Aspects.h in Headers */ = {isa = PBXBuildFile; fileRef = CB03389D1E8A7768004C2909 /* Aspects.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,6 +18,8 @@
 		CB0338AB1E8A9396004C2909 /* Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = CB0338A91E8A9396004C2909 /* Utils.h */; };
 		CB0338AC1E8A9396004C2909 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0338AA1E8A9396004C2909 /* Utils.m */; };
 		CB4BAC181EA31D79005F2AE9 /* libffi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4BAC171EA31D79005F2AE9 /* libffi.a */; };
+		CB4BAC1A1EA36217005F2AE9 /* NVMStructTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = CB4BAC191EA36217005F2AE9 /* NVMStructTests.mm */; };
+		CB4BAC1C1EA3660B005F2AE9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4BAC1B1EA3660B005F2AE9 /* CoreGraphics.framework */; };
 		CBBA3B1A1E94BE6200646892 /* ffi.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B0E1E94BE6200646892 /* ffi.h */; };
 		CBBA3B1B1E94BE6200646892 /* ffi_arm.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B0F1E94BE6200646892 /* ffi_arm.h */; };
 		CBBA3B1C1E94BE6200646892 /* ffi_arm64.h in Headers */ = {isa = PBXBuildFile; fileRef = CBBA3B101E94BE6200646892 /* ffi_arm64.h */; };
@@ -48,7 +49,6 @@
 		95FF5AD7986FF24D3A2D3D17 /* Pods-NVMAspects.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NVMAspects.release.xcconfig"; path = "Pods/Target Support Files/Pods-NVMAspects/Pods-NVMAspects.release.xcconfig"; sourceTree = "<group>"; };
 		97120E88711A7A98B789C918 /* Pods_NVMAspects.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NVMAspects.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD8BBB861D8FCB2C00886DC9 /* NVMAspectsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NVMAspectsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD8BBB881D8FCB2C00886DC9 /* NVMAspectsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NVMAspectsTests.m; sourceTree = "<group>"; };
 		AD8BBB8A1D8FCB2C00886DC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD908CCA1D6C27FC00AF2F48 /* NVMAspects.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NVMAspects.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD908CCD1D6C27FC00AF2F48 /* NVMAspects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NVMAspects.h; sourceTree = "<group>"; };
@@ -61,6 +61,8 @@
 		CB0338A91E8A9396004C2909 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		CB0338AA1E8A9396004C2909 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		CB4BAC171EA31D79005F2AE9 /* libffi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libffi.a; sourceTree = "<group>"; };
+		CB4BAC191EA36217005F2AE9 /* NVMStructTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NVMStructTests.mm; sourceTree = "<group>"; };
+		CB4BAC1B1EA3660B005F2AE9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CBBA3B0E1E94BE6200646892 /* ffi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi.h; sourceTree = "<group>"; };
 		CBBA3B0F1E94BE6200646892 /* ffi_arm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi_arm.h; sourceTree = "<group>"; };
 		CBBA3B101E94BE6200646892 /* ffi_arm64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi_arm64.h; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB4BAC1C1EA3660B005F2AE9 /* CoreGraphics.framework in Frameworks */,
 				AD8BBB8B1D8FCB2C00886DC9 /* NVMAspects.framework in Frameworks */,
 				818F8C85208819637160BFB7 /* Pods_NVMAspectsTests.framework in Frameworks */,
 			);
@@ -111,8 +114,8 @@
 		AD8BBB871D8FCB2C00886DC9 /* NVMAspectsTests */ = {
 			isa = PBXGroup;
 			children = (
-				AD8BBB881D8FCB2C00886DC9 /* NVMAspectsTests.m */,
 				AD8BBB8A1D8FCB2C00886DC9 /* Info.plist */,
+				CB4BAC191EA36217005F2AE9 /* NVMStructTests.mm */,
 			);
 			path = NVMAspectsTests;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 		C01B573C0D683B2720B4C53E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB4BAC1B1EA3660B005F2AE9 /* CoreGraphics.framework */,
 				97120E88711A7A98B789C918 /* Pods_NVMAspects.framework */,
 				762A1CA451B0B4CF473CFAD9 /* Pods_NVMAspectsTests.framework */,
 			);
@@ -403,7 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD8BBB891D8FCB2C00886DC9 /* NVMAspectsTests.m in Sources */,
+				CB4BAC1A1EA36217005F2AE9 /* NVMStructTests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

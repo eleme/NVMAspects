@@ -9,69 +9,6 @@
 #import "AppDelegate.h"
 #import <NVMAspects/NVMAspects.h>
 
-typedef struct _ComplexStruct {
-  int a;
-  double b;
-  CGRect c;
-  CFTypeRef d;
-} ComplexStruct;
-
-typedef struct _SimpleStruct {
-  char a;
-  char b;
-} SimpleStruct;
-
-SimpleStruct MakeSimpleStruct (char a, char b) {
-  SimpleStruct s;
-  s.a = a;
-  s.b = b;
-  return s;
-}
-
-BOOL EqualToSimpleStruct(SimpleStruct s1, SimpleStruct s2) {
-  if (s1.a != s2.a) {
-    return NO;
-  }
-  if (s1.b != s2.b) {
-    return NO;
-  }
-  return YES;
-}
-
-ComplexStruct MakeComplexStruct(int a, double b, CGRect c, CFTypeRef d) {
-  ComplexStruct s;
-  s.a = a;
-  s.b = b;
-  s.c = c;
-  s.d = d;
-  
-  return s;
-}
-
-BOOL EqualToComplexStruct(ComplexStruct s1, ComplexStruct s2) {
-  if (s1.a != s2.a) {
-    return NO;
-  }
-  if (s1.b != s2.b) {
-    return NO;
-  }
-  if (!CGRectEqualToRect(s1.c, s2.c)) {
-    return NO;
-  }
-  if (s1.d != s2.d) {
-    return NO;
-  }
-  
-  return YES;
-}
-
-typedef ComplexStruct * ComplexStructRef;
-
-CGRect RECT = CGRectMake(1, 2, 3, 4);
-ComplexStruct COMPLEXSTRUCT = MakeComplexStruct(1, 1.4, RECT, NULL);
-SimpleStruct SIMPLESTRUCT = MakeSimpleStruct(1, 2);
-CGPoint POINT = CGPointMake(1.4, 1.5);
-
 typedef void(^NormalBlock)(void);
 
 @interface AppDelegate (NoIMP)
@@ -138,21 +75,6 @@ typedef void(^NormalBlock)(void);
                       NSLog(@"Hooked methodReturnBlock");
                       return nil;
                     } error:NULL];
-  
-  [self nvm_hookInstanceMethod:@selector(methodReturnRect)
-                    usingBlock:^CGRect(NVMAspectInfo *info){
-                      NSLog(@"Hooked methodReturnRect");
-                      [info.oriInvocation invoke];
-                      CGRect rect;
-                      [info.oriInvocation getReturnValue:&rect];
-                      return rect;
-                    } error:NULL];
-  [self nvm_hookInstanceMethod:@selector(methodHandleComplexStruct:)
-                    usingBlock:^ComplexStruct (NVMAspectInfo *info, ComplexStruct cStruct) {
-                      [info.oriInvocation invoke];
-                      NSLog(@"Hooked methodHandleComplexStruct:");
-                      return cStruct;
-                    } error:NULL];
   [self nvm_hookInstanceMethod:@selector(methodWithInt:object:block:)
                     usingBlock:^NormalBlock(NVMAspectInfo *info, NSInteger argInt,
                                             id argObject, NormalBlock argBlock) {
@@ -160,21 +82,6 @@ typedef void(^NormalBlock)(void);
                       NSLog(@"Hooked methodWithMultiArgs");
                       return nil;
                     } error:NULL];
-  [self nvm_hookInstanceMethod:@selector(methodHandleStructRef:)
-                    usingBlock:^ComplexStructRef(NVMAspectInfo *info, ComplexStructRef ref) {
-                      [info.oriInvocation invoke];
-                      NSLog(@"Hooked methodHandleStructRef");
-                      return NULL;
-                    } error:NULL];
-  [self nvm_hookInstanceMethod:@selector(methodHandleSimpleStruct:)
-                    usingBlock:^SimpleStruct(NVMAspectInfo *info, SimpleStruct sStruct) {
-                      NSLog(@"Hooked methodHandleSimpleStruct");
-                      [info.oriInvocation invoke];
-                      return SIMPLESTRUCT;
-                    } error:NULL];
-  [self nvm_hookInstanceMethod:@selector(methodHandleCGPoint:) usingBlock:^CGPoint (NVMAspectInfo *info, CGPoint point) {
-    return POINT;
-  } error:NULL];
   
   [self methodReturnVoid];
   
@@ -185,9 +92,6 @@ typedef void(^NormalBlock)(void);
   
   [self methodWithoutImplement];
   
-  CGRect returnRect = [self methodReturnRect];
-  NSAssert(CGRectEqualToRect(returnRect, RECT), nil);
-  
   [self methodReturnBlock];
   
   [self methodReturnORIObject];
@@ -196,17 +100,7 @@ typedef void(^NormalBlock)(void);
   
   [self methodReturnBlock];
   
-  ComplexStruct cStruct = [self methodHandleComplexStruct:COMPLEXSTRUCT];
-  NSAssert(EqualToComplexStruct(cStruct, COMPLEXSTRUCT), nil);
-  
-  SimpleStruct sStruct = [self methodHandleSimpleStruct:SIMPLESTRUCT];
-  NSAssert(EqualToSimpleStruct(sStruct, SIMPLESTRUCT), nil);
-  
-  CGPoint point = [self methodHandleCGPoint:POINT];
-  NSAssert(CGPointEqualToPoint(POINT, point), nil);
-  
   [self methodWithInt:1 object:nil block:nil];
-  [self methodHandleStructRef:NULL];
   
   return YES;
 }
@@ -244,32 +138,6 @@ typedef void(^NormalBlock)(void);
                        block:(NormalBlock)argBlock {
   NSLog(@"ORI methodWithMultiArgs");
   return nil;
-}
-
-- (CGRect)methodReturnRect {
-  NSLog(@"ORI methodReturnRect");
-  return RECT;
-}
-
-
-- (ComplexStruct)methodHandleComplexStruct:(ComplexStruct)cStruct {
-  NSLog(@"ORI methodHandleComplexStruct");
-  return cStruct;
-}
-
-- (SimpleStruct)methodHandleSimpleStruct:(SimpleStruct)sStruct {
-  NSLog(@"ORI methodHandleSimpleStruct");
-  return SIMPLESTRUCT;
-}
-
-- (CGPoint)methodHandleCGPoint:(CGPoint)point {
-  NSLog(@"ORI methodHandleCGPoint");
-  return POINT;
-}
-
-- (ComplexStructRef)methodHandleStructRef:(ComplexStructRef)ref {
-  NSLog(@"ORI methodHandleStructRef");
-  return NULL;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
