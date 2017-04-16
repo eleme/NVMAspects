@@ -25,8 +25,8 @@ static inline ffi_type *ffiTypeForStructEncodingChar(const char *c) {
   }
   
   ffi_type *structType = malloc(sizeof(ffi_type));
-  structType->alignment = 0;
-  structType->size = 0;
+  structType->alignment = align;
+  structType->size = size;
   structType->type = FFI_TYPE_STRUCT;
   structType->elements = elementsInStructsForEncodingChar(c);
   
@@ -80,7 +80,7 @@ ffi_type * ffiTypeForPrimitiveEncodingChar(const char *c) {
   return NULL;
 }
 
-static char const *whereStructElementStart(char const *encoding) {
+static char const *startPositionForStructElement(char const *encoding) {
   // struct encoding is like this:"{CGRect={CGPoint=dd}{CGSize=dd}}"
   // so first element is after '='
   while (encoding[0] != '=') {
@@ -92,7 +92,7 @@ static char const *whereStructElementStart(char const *encoding) {
 }
 
 static inline ffi_type ** elementsInStructsForEncodingChar(const char *encoding) {
-  encoding = whereStructElementStart(encoding);
+  encoding = startPositionForStructElement(encoding);
   
   NSPointerArray *array = [NSPointerArray pointerArrayWithOptions:NSPointerFunctionsOpaqueMemory];
   while (encoding[0] != _C_STRUCT_E) {
