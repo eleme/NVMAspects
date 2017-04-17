@@ -9,9 +9,13 @@
 #import <XCTest/XCTest.h>
 #import "NVMAspects.h"
 
+#pragma mark - struct define
+
 typedef struct _SimpleStruct {
-  short a;
+  char a;
   char b;
+  char c;
+  char d;
 } SimpleStruct, *SimpleStructRef;
 
 BOOL SimpleStructEqualToSimpleStruct(SimpleStruct one,
@@ -34,6 +38,27 @@ BOOL ComplexStructEqualToComplexStruct(ComplexStruct one,
           one.d == theOther.d);
 }
 
+typedef struct _StructWithCArray {
+  char a[3];
+  char b;
+} StructWithCArray;
+
+BOOL StructWithCArrayEqualToStructWithCArray(StructWithCArray one,
+                                             StructWithCArray theOther) {
+  for (NSInteger i = 0; i < 2; i++) {
+    if (one.a[i] != theOther.a[i]) {
+      return NO;
+    }
+  }
+  if (one.b != theOther.b) {
+    return NO;
+  }
+  
+  return YES;
+}
+
+#pragma mark - InOut
+
 static CGRect InRect = CGRectMake(1, 2, 3, 4);
 static CGRect OutRect = CGRectMake(3, 1, 2, 2);
 
@@ -48,6 +73,9 @@ static ComplexStruct OutComplexStruct = {.a = 2, .b = 2.2, .c = OutRect, NULL};
 
 static SimpleStructRef InSimpleStructRef = &InSimpleStruct;
 static SimpleStructRef OutSimpleStructRef = &OutSimpleStruct;
+
+static StructWithCArray InStructWithCArray = {.a = {1, 2}, .b = 2};
+static StructWithCArray OutStructWithCArray = {.a = {2, 3}, .b = 3};
 
 @interface NVMObjectHandleStruct : NSObject
 
@@ -75,6 +103,10 @@ static SimpleStructRef OutSimpleStructRef = &OutSimpleStruct;
 
 - (SimpleStructRef)methodHandleStructRef:(SimpleStructRef)inStructRef {
   return OutSimpleStructRef;
+}
+
+- (StructWithCArray)methodHandleStructWithCArray:(StructWithCArray)inStructWithCArray {
+  return OutStructWithCArray;
 }
 
 @end
@@ -192,6 +224,27 @@ static SimpleStructRef OutSimpleStructRef = &OutSimpleStruct;
                                  } error:NULL];
   SimpleStructRef result = [self.targetObject methodHandleStructRef:InSimpleStructRef];
   XCTAssert(result == OutSimpleStructRef);
+}
+
+- (void)notestStructWithCArray {
+  // struct with c array is not fully support comment out the test
+  [self.targetObject nvm_hookInstanceMethod:@selector(methodHandleStructWithCArray:)
+                                 usingBlock:^StructWithCArray (NVMAspectInfo *info, StructWithCArray inStructWithCArray) {
+                                   XCTAssert(StructWithCArrayEqualToStructWithCArray(inStructWithCArray, InStructWithCArray));
+                                   
+                                   StructWithCArray temp;
+                                   
+                                   [info.oriInvocation getArgument:&temp atIndex:2];
+                                   XCTAssert(StructWithCArrayEqualToStructWithCArray(temp, inStructWithCArray));
+                                   
+                                   [info.oriInvocation invoke];
+                                   [info.oriInvocation getReturnValue:&temp];
+                                   XCTAssert(StructWithCArrayEqualToStructWithCArray(temp, OutStructWithCArray));
+                                   
+                                   return OutStructWithCArray;
+                                 } error:NULL];
+  StructWithCArray result = [self.targetObject methodHandleStructWithCArray:InStructWithCArray];
+  XCTAssert(StructWithCArrayEqualToStructWithCArray(result, OutStructWithCArray));
 }
 
 @end

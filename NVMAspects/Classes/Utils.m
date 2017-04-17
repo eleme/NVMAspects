@@ -80,7 +80,7 @@ static inline ffi_type * ffiTypeForPrimitiveEncodingChar(const char *c) {
   return NULL;
 }
 
-ffi_type *ffiTypeForCArrayEncoding(char const *encoding) {
+static inline ffi_type *primitiveTypeInCArrayFromCharEncoding(char const *encoding) {
   long len = strlen(encoding);
   const char *primitiveTypeEncoding = NULL;
   for (long position = len - 1; position >= 0; position--) {
@@ -90,7 +90,13 @@ ffi_type *ffiTypeForCArrayEncoding(char const *encoding) {
     }
   }
   
-  ffi_type *primitiveType = ffiTypeForPrimitiveEncodingChar(primitiveTypeEncoding);
+  return ffiTypeForPrimitiveEncodingChar(primitiveTypeEncoding);
+}
+
+ffi_type *ffiTypeForCArrayEncoding(char const *encoding) {
+  // this implement may crash in some situations, invesgate it later.
+  
+  ffi_type *primitiveType = &ffi_type_uchar;
   NSCAssert(primitiveType, nil);
   
   NSUInteger size = 0;
@@ -102,14 +108,14 @@ ffi_type *ffiTypeForCArrayEncoding(char const *encoding) {
   // use a struct to simulate a c array
   cAarrayType->type = FFI_TYPE_STRUCT;
   
-  NSInteger elementCount = size / primitiveType->size;
+  NSInteger elementCount = size;
   ffi_type **elements = malloc(sizeof(void *) *(elementCount + 1));
   for (NSInteger index = 0; index < elementCount; index++) {
     elements[index] = primitiveType;
   }
   elements[elementCount] = NULL;
-  
   cAarrayType->elements = elements;
+  
   return cAarrayType;
 }
 
@@ -129,13 +135,14 @@ static inline ffi_type ** elementsInStructsForEncodingChar(const char *encoding)
   
   NSPointerArray *array = [NSPointerArray pointerArrayWithOptions:NSPointerFunctionsOpaqueMemory];
   while (encoding[0] != _C_STRUCT_E) {
-    const char *start = encoding;
-    const char *end = NSGetSizeAndAlignment(start, NULL, NULL);
+    const char *end = NSGetSizeAndAlignment(encoding, NULL, NULL);
     ffi_type *type = NULL;
-    if (start[0] == _C_STRUCT_B) {
-      type = ffiTypeForStructEncodingChar(start);
+    if (encoding[0] == _C_STRUCT_B) {
+      type = ffiTypeForStructEncodingChar(encoding);
+    } else if (encoding[0] == _C_ARY_B) {
+      NSCAssert(NO, @"Struct contain c aaray is not support");
     } else {
-      type = ffiTypeForPrimitiveEncodingChar(start);
+      type = ffiTypeForPrimitiveEncodingChar(encoding);
     }
     
     NSCAssert(type, @"should have a type");
@@ -215,15 +222,3 @@ NSString *MethodTypesFromSignature(NSMethodSignature *signature) {
   }
   return string;
 }
-
-@implementation NSObject (ST)
-
-+ (void)load {
-  typedef char array[3][3];
-  NSUInteger size = 0;
-  NSUInteger align = 0;
-  NSGetSizeAndAlignment(@encode(array), &size, &align);
-  ffi_type *type = ffiTypeForCArrayEncoding(@encode(array));
-}
-
-@end
