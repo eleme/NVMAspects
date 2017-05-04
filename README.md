@@ -6,7 +6,7 @@
 
 ## Notes
 
-- original invocation 返回 id 类型的情况，直接操作内存，不要让 arc 介入，会崩
+- original invocation 返回 id 类型的情况，需要像下面的示例一样直接操作内存，不要让 arc 介入，否则会崩
     ```
     [self nvm_hookClassMethod:@selector(imageNamed:inBundle:compatibleWithTraitCollection:)
                    usingBlock:^UIImage *(NVMAspectInfo *info, NSString *name, NSBundle *bundle, UITraitCollection *traitCollection) {
