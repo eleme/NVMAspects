@@ -4,7 +4,25 @@
 
 ## Example
 
+## Notes
+
+- original invocation 返回 id 类型的情况，直接操作内存，不要让 arc 介入，会崩
+    ```
+    [self nvm_hookClassMethod:@selector(imageNamed:inBundle:compatibleWithTraitCollection:)
+                   usingBlock:^UIImage *(NVMAspectInfo *info, NSString *name, NSBundle *bundle, UITraitCollection *traitCollection) {
+                     void *image = nil;
+                     [info.oriInvocation invoke];
+                     [info.oriInvocation getReturnValue:&image];
+                     if (image) {
+                       objc_setAssociatedObject((__bridge id)image, @selector(nvm_imageName), name, OBJC_ASSOCIATION_COPY_NONATOMIC);
+                     }
+                     return (__bridge id)image;
+                   }
+                        error:NULL];
+    ```
+
 ## Requirements
+See `NVMAspects.podspec` file.
 
 ## Installation
 
