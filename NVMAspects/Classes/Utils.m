@@ -195,7 +195,7 @@ static inline bool isExtraEncoding(char encoding) {
   return encoding == '"' || encoding == '<';
 }
 
-BOOL MethodTypeMatch(const char *type, const char *otherType) {
+BOOL ObjCTypeIsEqual(const char *type, const char *otherType) {
   unsigned long typeLen = strlen(type);
   unsigned long otherTypeLen = strlen(otherType);
   unsigned long minLen = MIN(typeLen, otherTypeLen);
@@ -215,7 +215,7 @@ BOOL MethodTypeMatch(const char *type, const char *otherType) {
   return equal;
 }
 
-NSString *MethodTypesFromSignature(NSMethodSignature *signature) {
+NSString *ObjCTypesInSignature(NSMethodSignature *signature) {
   NSMutableString *string = [NSMutableString stringWithFormat:@"%s", signature.methodReturnType];
   for (NSInteger i = 0; i < signature.numberOfArguments; i++) {
     [string appendString:[NSString stringWithUTF8String:[signature getArgumentTypeAtIndex:i]]];

@@ -9,12 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "ffi.h"
 
-extern ffi_type * ffiTypeFromEncodingChar(const char *c);
+extern ffi_type *ffiTypeFromEncodingChar(const char *c);
 
 extern void AspectLuckySetError(NSError **error, NSInteger code, NSString *description);
 
-extern BOOL MethodTypeMatch(const char *type, const char *otherType);
+extern BOOL ObjCTypeIsEqual(const char *type, const char *otherType);
 
-extern NSString *MethodTypesFromSignature(NSMethodSignature *signature);
-
-extern ffi_type *ffiTypeForCArrayEncoding(char const *encoding);
+extern NSString *ObjCTypesInSignature(NSMethodSignature *signature);

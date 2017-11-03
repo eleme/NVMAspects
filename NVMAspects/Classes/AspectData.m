@@ -13,7 +13,7 @@
 static NSString *const SignatureNote = @""
 "Block's signature should compatible with method."
 "This means they have same return type,"
-"and block take a NVMAspectInfo as first argument, then other agrs pass to the method";
+"but block take NVMAspectInfo as first argument, then method args";
 
 @interface NVMAspectData ()
 
@@ -50,7 +50,7 @@ static NSString *const SignatureNote = @""
   data.cls = cls;
   data.selector = selector;
   data.methodSignature = methodSignature;
-  data.hasNoReturnValue = MethodTypeMatch(methodSignature.methodReturnType,
+  data.hasNoReturnValue = ObjCTypeIsEqual(methodSignature.methodReturnType,
                                           @encode(void));
   
   data.oriIMP = [cls instanceMethodForSelector:selector];
@@ -122,14 +122,14 @@ static BOOL IsCompatibleWithBlockSignature(NSMethodSignature *methodSignature,
   NSCAssert(signaturesMatch, nil);
   
   if (signaturesMatch) {
-    signaturesMatch = MethodTypeMatch([blockSignature getArgumentTypeAtIndex:1],
+    signaturesMatch = ObjCTypeIsEqual([blockSignature getArgumentTypeAtIndex:1],
                                       @encode(NVMAspectInfo *));
     
     NSCAssert(signaturesMatch, nil);
   }
   
   if (signaturesMatch) {
-    signaturesMatch = MethodTypeMatch([methodSignature methodReturnType],
+    signaturesMatch = ObjCTypeIsEqual([methodSignature methodReturnType],
                                       [blockSignature methodReturnType]);
     NSCAssert(signaturesMatch, nil);
   }
@@ -137,7 +137,7 @@ static BOOL IsCompatibleWithBlockSignature(NSMethodSignature *methodSignature,
   if (signaturesMatch) {
     for (NSUInteger idx = 2; idx < blockSignature.numberOfArguments; idx++) {
       // Only compare parameter, not the optional type data.
-      signaturesMatch = MethodTypeMatch([methodSignature getArgumentTypeAtIndex:idx],
+      signaturesMatch = ObjCTypeIsEqual([methodSignature getArgumentTypeAtIndex:idx],
                                         [blockSignature getArgumentTypeAtIndex:idx]);
       if (!signaturesMatch) {
         NSCAssert(signaturesMatch, nil);

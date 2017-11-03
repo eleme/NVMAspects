@@ -65,8 +65,8 @@ static void MessageInterpreter(ffi_cif *cif, void *ret,
   }
   
   NVMAspectInfo *info = [NVMAspectInfo new];
-  void **slfLocation = args[0];
-  info.slf = (__bridge id)(*slfLocation);
+  void **slf = args[0];
+  info.slf = (__bridge id)(*slf);
   info.selector = data.selector;
   info.oriInvocation = methodInvocation;
   
@@ -126,7 +126,7 @@ static inline BOOL HookClass(Class class, SEL selector,
   }
   
   ffi_type **argTypes = malloc(sizeof(ffi_type *) *argCount);
-  // After this return No will leak some memory, but this should not happen when you ship a stable relase.
+  // After this, return No will leak some memory, but this should not happen when you ship a stable relase.
   for (int i = 0; i < argCount; i++) {
     argTypes[i] = ffiTypeFromEncodingChar([methodSignature getArgumentTypeAtIndex:i]);
     
@@ -167,7 +167,7 @@ static inline BOOL HookClass(Class class, SEL selector,
      method_setImplementation(method, newIMP);
    } else {
      class_addMethod(class, selector, newIMP,
-                     MethodTypesFromSignature(methodSignature).UTF8String);
+                     ObjCTypesInSignature(methodSignature).UTF8String);
    }
  });
   
