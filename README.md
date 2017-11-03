@@ -1,41 +1,36 @@
 # NVMAspects
 
 ## About
+Yet another AOP library for Objective-C, but implement by using [libffi](https://github.com/libffi/libffi/). The main goal for this lib is to avoid heavily use of `forwardInvocation` and also easy to use.
+
+This lib is inspired by [Aspects](https://github.com/steipete/Aspects), [JSPatch](https://github.com/bang590/JSPatch), [NSBlog](https://www.mikeash.com/pyblog/) and [sunnyxx's blog](sunnyxx), thanks all these people.
 
 ## Example
 
+A simple example is look like this.  Currently need the user to care about the memory management when use `invocation` and `arc`,  will add more convenient method on this.  
+```
+[[UIImage class] nvm_hookInstanceMethod:@selector(imageNamed:)
+                               usingBlock:^UIImage *(NVMAspectInfo *info, NSString *name) {
+                                 NSLog(@"Load Image named %@", name);
+                                 
+                                 void *image = nil;
+                                 [info.oriInvocation invoke];
+                                 [info.oriInvocation getReturnValue:&image];
+                                 return (__bridge id)image;
+                               }
+                                    error:NULL];
+```
+
 ## Notes
 
-- original invocation 返回 id 类型的情况，需要像下面的示例一样直接操作内存，不要让 arc 介入，否则会崩
-    ```
-    [self nvm_hookClassMethod:@selector(imageNamed:inBundle:compatibleWithTraitCollection:)
-                   usingBlock:^UIImage *(NVMAspectInfo *info, NSString *name, NSBundle *bundle, UITraitCollection *traitCollection) {
-                     void *image = nil;
-                     [info.oriInvocation invoke];
-                     [info.oriInvocation getReturnValue:&image];
-                     if (image) {
-                       objc_setAssociatedObject((__bridge id)image, @selector(nvm_imageName), name, OBJC_ASSOCIATION_COPY_NONATOMIC);
-                     }
-                     return (__bridge id)image;
-                   }
-                        error:NULL];
-    ```
+- Actually there are some bugs on lib, see this three issues, [Bit Field](https://github.com/eleme/NVMAspects/issues/3),  [Union](https://github.com/eleme/NVMAspects/issues/2), [Struct contain array](https://github.com/eleme/NVMAspects/issues/1). But `bit field` and `union` also not support by apple's `NSInvocation`，struct contain array is a bug in `libffi`.  All these features used very rare in Objective-C,  so it's not a big problem.
 
-## Requirements
+- ## Requirements
 See `NVMAspects.podspec` file.
 
 ## Installation
 
-NVMAspects is available through our private [pod source](git@git.elenet.me:eleme.mobile.ios/ios-specs.git). To install
-it:
-
-1. add the following line to the beginning of your Podfile:
-
-```ruby
-source 'git@git.elenet.me:eleme.mobile.ios/ios-specs.git'
-```
-
-2. add the following line to your Podfile:
+add the following line to your Podfile:
 
 ```ruby
 pod "NVMAspects"
