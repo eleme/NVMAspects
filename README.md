@@ -22,9 +22,9 @@ A simple example is look like this. If you want to alter the arguments or change
 
 - Actually there are some bugs on this lib, [Bit Field](https://github.com/eleme/NVMAspects/issues/3),  [Union](https://github.com/eleme/NVMAspects/issues/2), [Struct contain array](https://github.com/eleme/NVMAspects/issues/1). But `bit field` and `union` are also not well supportted by apple's `NSInvocation`, struct contain small array is a bug in `libffi`.  All these features used very rare in Objective-C,  so it's not a big problem.
 
-- NVMAspects doesn't forbidden you to hook any method, but if you make some change to method like `alloc`, you should follow the memory management policy, especially in `ARC`.
+- NVMAspects doesn't forbidden you to hook any method, but if you make some changes to method like `alloc`, you should follow the memory management policy, especially in `ARC`.
 
-- Currently if a class has defined a method, hook this method will change it's `imp`, even if that method is implemented by it's super class. But this is not a big problem, you can distinguish the class by test `[self class]` in you block. If the class has not defined a method, will add one to that class.
+- Currently if a class has defined a method, hook this method will change it's `imp`, even if that method is implemented by it's super class. But this is not a big problem, you can distinguish the class by test `[self class]` in you block. If the class has not defined a method, you should add a placeholder by call `class_addPlaceholderIfNoImplement`.
 
 - ## Requirements
 See `NVMAspects.podspec` file.
