@@ -10,15 +10,15 @@ This lib is inspired by [Aspects](https://github.com/steipete/Aspects), [JSPatch
 A simple example is look like this.  Currently need the user to care about the memory management when use `invocation` and `arc`,  will add more convenient method on this.  
 ```
 [[UIImage class] nvm_hookInstanceMethod:@selector(imageNamed:)
-                               usingBlock:^UIImage *(NVMAspectInfo *info, NSString *name) {
-                                 NSLog(@"Load Image named %@", name);
+                             usingBlock:^UIImage *(NVMAspectInfo *info, NSString *name) {
+                         	   NSLog(@"Load Image named %@", name);
                                  
-                                 void *image = nil;
-                                 [info.oriInvocation invoke];
-                                 [info.oriInvocation getReturnValue:&image];
-                                 return (__bridge id)image;
-                               }
-                                    error:NULL];
+                               void *image = nil;
+                               [info.oriInvocation invoke];
+                               [info.oriInvocation getReturnValue:&image];
+                               return (__bridge id)image;
+                             }
+                                 error:NULL];
 ```
 
 ## Notes
@@ -36,11 +36,6 @@ add the following line to your Podfile:
 pod "NVMAspects"
 ```
 
-
-## Author
-
-Karl Peng, codelife2012@gmail.com
-
 ## License
 
-NVMAspects is created and licensed by Rajax Network Technology Co., Ltd. Copyright 2017 Rajax Network Technology Co., Ltd. All rights reserved.
+NVMAspects is released under the MIT license.

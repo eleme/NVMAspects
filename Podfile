@@ -1,6 +1,3 @@
-source 'git@git.elenet.me:eleme.mobile.ios/ios-specs.git'
-source 'git@git.elenet.me:arch.mobile/iOS_specs.git'
-source 'git@git.elenet.me:eleme.mobile.ios/Specs.git'
 
 use_frameworks!
 
