@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AD5A93711DB8C50F00250698 /* NVMAspects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5A93701DB8C50F00250698 /* NVMAspects.framework */; };
-		AD5A93721DB8C50F00250698 /* NVMAspects.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD5A93701DB8C50F00250698 /* NVMAspects.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AD908D061D6C28E700AF2F48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD908D051D6C28E700AF2F48 /* main.m */; };
-		AD908D091D6C28E700AF2F48 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = AD908D081D6C28E700AF2F48 /* AppDelegate.mm */; };
+		AD908D091D6C28E700AF2F48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD908D081D6C28E700AF2F48 /* AppDelegate.m */; };
 		AD908D0C1D6C28E700AF2F48 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD908D0B1D6C28E700AF2F48 /* ViewController.m */; };
 		AD908D0F1D6C28E700AF2F48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD908D0D1D6C28E700AF2F48 /* Main.storyboard */; };
 		AD908D111D6C28E700AF2F48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD908D101D6C28E700AF2F48 /* Assets.xcassets */; };
 		AD908D141D6C28E700AF2F48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD908D121D6C28E700AF2F48 /* LaunchScreen.storyboard */; };
+		CB7B40651FAC94E80036429C /* NVMAspects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7B40661FAC94E80036429C /* NVMAspects.framework */; };
 		D282691EAA07498AA454A83B /* Pods_NVMAspectsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C94F8071F36719AC2CE0B6A /* Pods_NVMAspectsDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,7 +24,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AD5A93721DB8C50F00250698 /* NVMAspects.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -36,18 +34,17 @@
 		5A25529C9423250CA95423C0 /* Pods-NVMAspectsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NVMAspectsDemo.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-NVMAspectsDemo/Pods-NVMAspectsDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5F22F7DF41862F0BFC6798EC /* Pods-NVMAspectsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NVMAspectsDemo.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-NVMAspectsDemo/Pods-NVMAspectsDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		9C94F8071F36719AC2CE0B6A /* Pods_NVMAspectsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NVMAspectsDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD5A93701DB8C50F00250698 /* NVMAspects.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NVMAspects.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD908D011D6C28E700AF2F48 /* NVMAspectsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NVMAspectsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD908D051D6C28E700AF2F48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AD908D071D6C28E700AF2F48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		AD908D081D6C28E700AF2F48 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		AD908D081D6C28E700AF2F48 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AD908D0A1D6C28E700AF2F48 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		AD908D0B1D6C28E700AF2F48 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AD908D0E1D6C28E700AF2F48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD908D101D6C28E700AF2F48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD908D131D6C28E700AF2F48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD908D151D6C28E700AF2F48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ADD9C8521D6C3A9800A441E3 /* NVMAspects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVMAspects.framework; path = "../../build/Release-iphoneos/NVMAspects.framework"; sourceTree = "<group>"; };
+		CB7B40661FAC94E80036429C /* NVMAspects.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NVMAspects.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD5A93711DB8C50F00250698 /* NVMAspects.framework in Frameworks */,
+				CB7B40651FAC94E80036429C /* NVMAspects.framework in Frameworks */,
 				D282691EAA07498AA454A83B /* Pods_NVMAspectsDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,7 +63,6 @@
 		AD908CF81D6C28E700AF2F48 = {
 			isa = PBXGroup;
 			children = (
-				AD5A93701DB8C50F00250698 /* NVMAspects.framework */,
 				AD908D031D6C28E700AF2F48 /* NVMAspectsDemo */,
 				ADD9C8511D6C3A6500A441E3 /* Frameworks */,
 				AD908D021D6C28E700AF2F48 /* Products */,
@@ -86,7 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				AD908D071D6C28E700AF2F48 /* AppDelegate.h */,
-				AD908D081D6C28E700AF2F48 /* AppDelegate.mm */,
+				AD908D081D6C28E700AF2F48 /* AppDelegate.m */,
 				AD908D0A1D6C28E700AF2F48 /* ViewController.h */,
 				AD908D0B1D6C28E700AF2F48 /* ViewController.m */,
 				AD908D0D1D6C28E700AF2F48 /* Main.storyboard */,
@@ -109,7 +105,7 @@
 		ADD9C8511D6C3A6500A441E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ADD9C8521D6C3A9800A441E3 /* NVMAspects.framework */,
+				CB7B40661FAC94E80036429C /* NVMAspects.framework */,
 				9C94F8071F36719AC2CE0B6A /* Pods_NVMAspectsDemo.framework */,
 			);
 			name = Frameworks;
@@ -249,7 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD908D0C1D6C28E700AF2F48 /* ViewController.m in Sources */,
-				AD908D091D6C28E700AF2F48 /* AppDelegate.mm in Sources */,
+				AD908D091D6C28E700AF2F48 /* AppDelegate.m in Sources */,
 				AD908D061D6C28E700AF2F48 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

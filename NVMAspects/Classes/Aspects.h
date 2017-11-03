@@ -20,12 +20,14 @@ typedef NS_ENUM(NSUInteger, NVMAspectErrorCode) {
 @property (nonatomic, unsafe_unretained) id slf;
 @property (nonatomic, assign) SEL selector;
 
-// oriInvocation will be nil, when class does not imp selector
 @property (nonatomic, strong) NSInvocation *invocation;
 
 @end
 
 extern NSString *const NVMAspectErrorDomain;
+
+extern BOOL class_addPlaceholderIfNoImplement(Class cls, SEL sel,
+                                              NSMethodSignature* sig);
 
 @interface NSObject (NVMAspects)
 
@@ -34,14 +36,6 @@ extern NSString *const NVMAspectErrorDomain;
                          error:(NSError **)error;
 
 + (BOOL)nvm_hookClassMethod:(SEL)selector
-                 usingBlock:(id)block
-                      error:(NSError **)error;
-
-- (BOOL)nvm_hookInstanceMethod:(SEL)selector
-                    usingBlock:(id)block
-                         error:(NSError **)error;
-
-- (BOOL)nvm_hookClassMethod:(SEL)selector
                  usingBlock:(id)block
                       error:(NSError **)error;
 

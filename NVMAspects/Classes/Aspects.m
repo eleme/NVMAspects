@@ -160,18 +160,28 @@ static inline BOOL HookClass(Class class, SEL selector,
     return NO;
   }
   
- PerformBlockInGlobalLock(^{
-   Method method = class_getInstanceMethod(class, selector);
-   data.oriIMP = method_getImplementation(method);
-   if (method) {
-     method_setImplementation(method, newIMP);
-   } else {
-     class_addMethod(class, selector, newIMP,
-                     ObjCTypesInSignature(methodSignature).UTF8String);
-   }
+  PerformBlockInGlobalLock(^{
+    Method method = class_getInstanceMethod(class, selector);
+    NSCAssert(method, @"$@ should contain a implementation for %@",
+              class, NSStringFromSelector(selector));
+    data.oriIMP = method_getImplementation(method);
+    method_setImplementation(method, newIMP);
  });
   
   return YES;
+}
+
+BOOL class_addPlaceholderIfNoImplement(Class cls, SEL sel,
+                                              NSMethodSignature* sig) {
+  NSCParameterAssert(cls);
+  NSCParameterAssert(sig);
+  
+  Method method = class_getInstanceMethod(cls, sel);
+  if (!method) {
+    void *imp = NULL;
+    class_addMethod(cls, sel, imp, ObjCTypesInSignature(sig).UTF8String);
+  }
+  return NO;
 }
 
 @implementation NSObject (NVMAspects)
@@ -186,20 +196,6 @@ static inline BOOL HookClass(Class class, SEL selector,
                     usingBlock:(id)block
                          error:(NSError *__autoreleasing *)error  {
    return HookClass(self, selector, block, error);
-}
-
-- (BOOL)nvm_hookInstanceMethod:(SEL)selector
-                    usingBlock:(id)block
-                         error:(NSError *__autoreleasing *)error {
-  return [[self class] nvm_hookInstanceMethod:selector
-                                   usingBlock:block error:error];
-}
-
-- (BOOL)nvm_hookClassMethod:(SEL)selector
-                 usingBlock:(id)block
-                      error:(NSError *__autoreleasing *)error {
-  return [[self class] nvm_hookClassMethod:selector
-                                usingBlock:block error:error];
 }
 
 @end
