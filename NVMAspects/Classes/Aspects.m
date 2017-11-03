@@ -180,6 +180,7 @@ BOOL class_addPlaceholderIfNoImplement(Class cls, SEL sel,
   if (!method) {
     void *imp = NULL;
     class_addMethod(cls, sel, imp, ObjCTypesInSignature(sig).UTF8String);
+    return YES;
   }
   return NO;
 }

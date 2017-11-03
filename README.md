@@ -7,16 +7,13 @@ This lib is inspired by [Aspects](https://github.com/steipete/Aspects), [JSPatch
 
 ## Example
 
-A simple example is look like this.  Currently need the user to care about the memory management when use `invocation` and `arc`,  will add more convenient method on this.  
+A simple example is look like this. If you want to alter the arguments or change the return value, please modify `info.invocation`. If you aren't sure a class has implement the selector, you should call `class_addPlaceholderIfNoImplement` to add a placeholder, then hook it.
 ```
 [[UIImage class] nvm_hookInstanceMethod:@selector(imageNamed:)
-                             usingBlock:^UIImage *(NVMAspectInfo *info, NSString *name) {
-                               NSLog(@"Load Image named %@", name);
-                                 
-                               void *image = nil;
-                               [info.oriInvocation invoke];
-                               [info.oriInvocation getReturnValue:&image];
-                               return (__bridge id)image;
+                             usingBlock:^void *(NVMAspectInfo *info, NSString *name) {
+                               NSLog(@"Load image named %@", name);
+
+                               [info.invocation invoke];
                              }
                                  error:NULL];
 ```
