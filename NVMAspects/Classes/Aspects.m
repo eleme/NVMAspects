@@ -43,7 +43,7 @@
 
 - (NSString *)description {
   return [NSString stringWithFormat:@"Aspect info invocate with %@",
-          self.oriInvocation];
+          self.invocation];
 }
 
 @end
@@ -68,7 +68,7 @@ static void MessageInterpreter(ffi_cif *cif, void *ret,
   void **slf = args[0];
   info.slf = (__bridge id)(*slf);
   info.selector = data.selector;
-  info.oriInvocation = methodInvocation;
+  info.invocation = methodInvocation;
   
   NSInvocation *blockInvocation = [NSInvocation invocationWithMethodSignature:data.blockSignature];
   if (numberOfArguments > 1) {
@@ -80,7 +80,7 @@ static void MessageInterpreter(ffi_cif *cif, void *ret,
   
   [blockInvocation invokeWithTarget:data.impBlock];
   if (!data.hasNoReturnValue) {
-    [blockInvocation getReturnValue:ret];
+    [methodInvocation getReturnValue:ret];
   }
   
   data = nil;

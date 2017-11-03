@@ -28,65 +28,61 @@ typedef void(^NormalBlock)(void);
   
   [self nvm_hookInstanceMethod:@selector(methodReturnVoid)
                     usingBlock:^(NVMAspectInfo *info) {
-                      [info.oriInvocation invoke];
+                      [info.invocation invoke];
                       NSLog(@"Hooked methodReturnVoid");
                     } error:NULL];
   
   [self nvm_hookInstanceMethod:@selector(methodReturnVoid)
                     usingBlock:^(NVMAspectInfo *info) {
-                      [info.oriInvocation invoke];
+                      [info.invocation invoke];
                       NSLog(@"Hooked methodReturnVoid again");
                     } error:NULL];
   
   NSObject *object = [NSObject new];
   [self nvm_hookInstanceMethod:@selector(methodReturnHookedObject)
-                    usingBlock:^id (NVMAspectInfo *info){
-                      [info.oriInvocation invoke];
+                    usingBlock:^(NVMAspectInfo *info){
+                      [info.invocation invoke];
                       NSLog(@"Hooked methodReturnObject");
-                      return object;
+                      void *returnObject = (__bridge void *)object;
+                      [info.invocation setReturnValue:&returnObject];
                     } error:NULL];
   [self nvm_hookInstanceMethod:@selector(methodReturnORIObject)
-                    usingBlock:^id(NVMAspectInfo *info) {
+                    usingBlock:^(NVMAspectInfo *info) {
                       NSLog(@"Hooked methodReturnORIObject");
-                      [info.oriInvocation invoke];
-                      void *returnValue = NULL;
-                      [info.oriInvocation getReturnValue:&returnValue];
-                      return (__bridge id) returnValue;
+                      [info.invocation invoke];
                     } error:NULL];
   
   [self nvm_hookInstanceMethod:@selector(methodReturnInt)
                     usingBlock:^NSInteger (NVMAspectInfo *info) {
-                      [info.oriInvocation invoke];
+                      [info.invocation invoke];
                       NSLog(@"Hooked methodReturnInt");
                       return 2;
                     } error:NULL];
   
   [self nvm_hookInstanceMethod:@selector(methodWithoutImplement)
                     usingBlock:^(NVMAspectInfo *info) {
-                      [info.oriInvocation invoke];
+                      [info.invocation invoke];
                       NSLog(@"%@", info.slf);
                       NSLog(@"Hooked methodWithoutImplement");
                     } error:NULL];
   
   [self nvm_hookInstanceMethod:@selector(methodReturnArray)
-                    usingBlock:^NSArray *(NVMAspectInfo *info) {
-                      [info.oriInvocation invoke];
+                    usingBlock:^(NVMAspectInfo *info) {
+                      [info.invocation invoke];
                       NSLog(@"Hooked methodReturnArray");
-                      return nil;
                     } error:NULL];
   
   [self nvm_hookInstanceMethod:@selector(methodReturnBlock)
-                    usingBlock:^NormalBlock (NVMAspectInfo *info) {
-                      [info.oriInvocation invoke];
+                    usingBlock:^(NVMAspectInfo *info) {
+                      [info.invocation invoke];
                       NSLog(@"Hooked methodReturnBlock");
-                      return nil;
-                    } error:NULL];
+                    }
+                         error:NULL];
   [self nvm_hookInstanceMethod:@selector(methodWithInt:object:block:)
-                    usingBlock:^NormalBlock(NVMAspectInfo *info, NSInteger argInt,
-                                            id argObject, NormalBlock argBlock) {
-                      [info.oriInvocation invoke];
+                    usingBlock:^(NVMAspectInfo *info, NSInteger argInt,
+                                id argObject, NormalBlock argBlock) {
+                      [info.invocation invoke];
                       NSLog(@"Hooked methodWithMultiArgs");
-                      return nil;
                     } error:NULL];
   
   [self methodReturnVoid];
@@ -94,7 +90,7 @@ typedef void(^NormalBlock)(void);
   NSObject *returnObject = [self methodReturnHookedObject];
   NSAssert(returnObject == object, nil);
   
-  NSAssert([self methodReturnInt] == 2, nil);
+  NSAssert([self methodReturnInt] == 1, nil);
   
   [self methodWithoutImplement];
   

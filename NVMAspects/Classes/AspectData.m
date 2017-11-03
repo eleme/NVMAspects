@@ -129,12 +129,6 @@ static BOOL IsCompatibleWithBlockSignature(NSMethodSignature *methodSignature,
   }
   
   if (signaturesMatch) {
-    signaturesMatch = ObjCTypeIsEqual([methodSignature methodReturnType],
-                                      [blockSignature methodReturnType]);
-    NSCAssert(signaturesMatch, nil);
-  }
-  
-  if (signaturesMatch) {
     for (NSUInteger idx = 2; idx < blockSignature.numberOfArguments; idx++) {
       // Only compare parameter, not the optional type data.
       signaturesMatch = ObjCTypeIsEqual([methodSignature getArgumentTypeAtIndex:idx],

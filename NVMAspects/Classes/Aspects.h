@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, NVMAspectErrorCode) {
 @property (nonatomic, assign) SEL selector;
 
 // oriInvocation will be nil, when class does not imp selector
-@property (nonatomic, strong) NSInvocation *oriInvocation;
+@property (nonatomic, strong) NSInvocation *invocation;
 
 @end
 
