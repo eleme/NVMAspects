@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NVMAspects'
-  s.version          = '0.9.1'
+  s.version          = '0.9.2'
   s.license          = 'mit'
   s.summary          = 'Yet another AOP library for Objective-C.'
 
