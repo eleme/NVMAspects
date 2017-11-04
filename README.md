@@ -7,15 +7,15 @@ This lib is inspired by [Aspects](https://github.com/steipete/Aspects), [JSPatch
 
 ## Example
 
-A simple example is look like this. If you want to alter the arguments or change the return value, please modify `info.invocation`. If you aren't sure a class has implement the selector, you should call `class_addPlaceholderIfNoImplement` to add a placeholder, then hook it.
+A simple example is look like this, provide a block to replace the original implementation, look very similar to [Aspects](https://github.com/steipete/Aspects) but have a bit difference. You can alter the arguments or return value by modify `info.invocation`. If you aren't sure the existing of original implementation, you should call `class_addPlaceholderIfNoImplement` fisrt.
 ```
-[[UIImage class] nvm_hookInstanceMethod:@selector(imageNamed:)
-                             usingBlock:^void *(NVMAspectInfo *info, NSString *name) {
-                               NSLog(@"Load image named %@", name);
+[[UIImage nvm_hookInstanceMethod:@selector(imageNamed:)
+                      usingBlock:^void(NVMAspectInfo *info, NSString *name) {
+                        NSLog(@"Load image named %@", name);
 
-                               [info.invocation invoke];
-                             }
-                                 error:NULL];
+                        [info.invocation invoke];
+                      }
+                          error:NULL];
 ```
 
 ## Notes
@@ -24,7 +24,9 @@ A simple example is look like this. If you want to alter the arguments or change
 
 - NVMAspects doesn't forbidden you to hook any method, but if you make some changes to method like `alloc`, you should follow the memory management policy, especially in `ARC`.
 
-- Currently if a class has defined a method, hook this method will change it's `imp`, even if that method is implemented by it's super class. But this is not a big problem, you can distinguish the class by test `[self class]` in you block. If the class has not defined a method, you should add a placeholder by call `class_addPlaceholderIfNoImplement`.
+- Currently if a class has defined a method, hook this method will change it's `imp`, even if that method is implemented by it's super class. But this is not a big problem, you can distinguish the class by test `[self class]` in you block. If the class has not defined a method, you should call `class_addPlaceholderIfNoImplement` first.
+
+- For problem caused `forwardInvocation`, you can use this keyword to search issues in `Aspects` or `JSPatch`.
 
 - ## Requirements
 See `NVMAspects.podspec` file.
