@@ -29,13 +29,13 @@ typedef void(^NormalBlock)(void);
                            usingBlock:^(NVMAspectInfo *info) {
                              [info.invocation invoke];
                              NSLog(@"Hooked methodReturnVoid");
-                           } error:NULL];
+                           }];
   
   [AppDelegate nvm_hookInstanceMethod:@selector(methodReturnVoid)
                            usingBlock:^(NVMAspectInfo *info) {
                              [info.invocation invoke];
                              NSLog(@"Hooked methodReturnVoid again");
-                           } error:NULL];
+                           }];
   
   NSObject *object = [NSObject new];
   [AppDelegate nvm_hookInstanceMethod:@selector(methodReturnHookedObject)
@@ -44,19 +44,19 @@ typedef void(^NormalBlock)(void);
                              NSLog(@"Hooked methodReturnObject");
                              void *returnObject = (__bridge void *)object;
                              [info.invocation setReturnValue:&returnObject];
-                           } error:NULL];
+                           }];
   [AppDelegate nvm_hookInstanceMethod:@selector(methodReturnORIObject)
                            usingBlock:^(NVMAspectInfo *info) {
                              NSLog(@"Hooked methodReturnORIObject");
                              [info.invocation invoke];
-                           } error:NULL];
+                           }];
   
   [AppDelegate nvm_hookInstanceMethod:@selector(methodReturnInt)
                            usingBlock:^NSInteger (NVMAspectInfo *info) {
                              [info.invocation invoke];
                              NSLog(@"Hooked methodReturnInt");
                              return 2;
-                           } error:NULL];
+                           }];
   
   class_addPlaceholderIfNoImplement([AppDelegate class],
                                     @selector(methodWithoutImplement),
@@ -67,26 +67,25 @@ typedef void(^NormalBlock)(void);
                              [info.invocation invoke];
                              NSLog(@"%@", info.slf);
                              NSLog(@"Hooked methodWithoutImplement");
-                           } error:NULL];
+                           }];
   
   [AppDelegate nvm_hookInstanceMethod:@selector(methodReturnArray)
                            usingBlock:^(NVMAspectInfo *info) {
                              [info.invocation invoke];
                              NSLog(@"Hooked methodReturnArray");
-                           } error:NULL];
+                           }];
   
   [AppDelegate nvm_hookInstanceMethod:@selector(methodReturnBlock)
                            usingBlock:^(NVMAspectInfo *info) {
                              [info.invocation invoke];
                              NSLog(@"Hooked methodReturnBlock");
-                           }
-                                error:NULL];
+                           }];
   [AppDelegate nvm_hookInstanceMethod:@selector(methodWithInt:object:block:)
                            usingBlock:^(NVMAspectInfo *info, NSInteger argInt,
                                         id argObject, NormalBlock argBlock) {
                              [info.invocation invoke];
                              NSLog(@"Hooked methodWithMultiArgs");
-                           } error:NULL];
+                           }];
   
   [self methodReturnVoid];
   

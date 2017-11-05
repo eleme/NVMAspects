@@ -12,10 +12,8 @@ A simple example is look like this, provide a block to replace the original impl
 [[UIImage nvm_hookInstanceMethod:@selector(imageNamed:)
                       usingBlock:^void(NVMAspectInfo *info, NSString *name) {
                         NSLog(@"Load image named %@", name);
-
                         [info.invocation invoke];
-                      }
-                          error:NULL];
+                      }];
 ```
 
 ## Notes

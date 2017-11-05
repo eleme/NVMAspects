@@ -188,6 +188,15 @@ BOOL class_addPlaceholderIfNoImplement(Class cls, SEL sel,
 @implementation NSObject (NVMAspects)
 
 + (BOOL)nvm_hookClassMethod:(SEL)selector
+                 usingBlock:(id)block {
+  return HookClass(object_getClass(self), selector, block, NULL);
+}
+
++ (BOOL)nvm_hookInstanceMethod:(SEL)selector usingBlock:(id)block {
+  return HookClass(self, selector, block, NULL);
+}
+
++ (BOOL)nvm_hookClassMethod:(SEL)selector
                  usingBlock:(id)block
                       error:(NSError *__autoreleasing *)error {
   return HookClass(object_getClass(self), selector, block, error);
