@@ -8,7 +8,8 @@ This lib is inspired by [Aspects](https://github.com/steipete/Aspects), [JSPatch
 ## Example
 
 A simple example is look like this, provide a block to replace the original implementation, look very similar to [Aspects](https://github.com/steipete/Aspects) but have a bit difference. You can alter the arguments or return value by modify `info.invocation`. If you aren't sure the existing of original implementation, you should call `class_addPlaceholderIfNoImplement` fisrt.
-```
+
+```objective-c
 [[UIImage nvm_hookInstanceMethod:@selector(imageNamed:)
                       usingBlock:^void(NVMAspectInfo *info, NSString *name) {
                         NSLog(@"Load image named %@", name);
