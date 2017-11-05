@@ -19,7 +19,7 @@
 @property (nonatomic, assign, readonly) SEL selector;
 @property (nonatomic, strong, readonly) NSMethodSignature *methodSignature;
 
-@property (nonatomic, assign) BOOL hasNoReturnValue;
+@property (nonatomic, assign) BOOL hasReturnValue;
 
 @property (nonatomic, assign) IMP oriIMP;
 

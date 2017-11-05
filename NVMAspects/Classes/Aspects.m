@@ -79,7 +79,7 @@ static void MessageInterpreter(ffi_cif *cif, void *ret,
   }
   
   [blockInvocation invokeWithTarget:data.impBlock];
-  if (!data.hasNoReturnValue) {
+  if (data.hasReturnValue) {
     [methodInvocation getReturnValue:ret];
   }
   

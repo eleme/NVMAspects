@@ -50,8 +50,8 @@ static NSString *const SignatureNote = @""
   data.cls = cls;
   data.selector = selector;
   data.methodSignature = methodSignature;
-  data.hasNoReturnValue = ObjCTypeIsEqual(methodSignature.methodReturnType,
-                                          @encode(void));
+  data.hasReturnValue = !ObjCTypeIsEqual(methodSignature.methodReturnType,
+                                         @encode(void));
   
   data.oriIMP = [cls instanceMethodForSelector:selector];
   data.impBlock = impBlock;
