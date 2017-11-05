@@ -1,7 +1,7 @@
 # NVMAspects
 
 ## About
-Yet another AOP library for Objective-C, but implement by using [libffi](https://github.com/libffi/libffi/). The main goal for this lib is to avoid heavily use of `forwardInvocation`, powerful, and easy to use.
+Yet another AOP library for Objective-C, but implement by using [libffi](https://github.com/libffi/libffi/). The main goal for this lib is to avoid heavily use of `forwardInvocation`, powerful, easy to use and also easy to read.
 
 This lib is inspired by [Aspects](https://github.com/steipete/Aspects), [JSPatch](https://github.com/bang590/JSPatch), [NSBlog](https://www.mikeash.com/pyblog/) and [sunnyxx's blog](sunnyxx), thanks all these people.
 

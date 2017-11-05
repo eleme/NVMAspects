@@ -10,6 +10,11 @@
 #import "Aspects.h"
 #import "Utils.h"
 
+static NSString *const NilSignatureNote = @""
+"Block and Method should all have signature,"
+"if you try to add a method to a class,"
+"please call class_addPlaceholderIfNoImplement first.";
+
 static NSString *const SignatureNote = @""
 "Block's signature should compatible with method."
 "This means they have same return type,"
@@ -33,12 +38,12 @@ static NSString *const SignatureNote = @""
                            impBlock:(id)impBlock
                               error:(NSError *__autoreleasing *)error {
   NSMethodSignature *blockSignature = BlockSignature(impBlock, error);
-  if (!blockSignature) {
-    return nil;
-  }
   NSMethodSignature *methodSignature = [cls instanceMethodSignatureForSelector:selector];
-  if (!methodSignature) {
-    methodSignature = MethodSignatureFromBlockSignature(blockSignature);
+  
+  BOOL allHave = blockSignature && methodSignature;
+  NSAssert(allHave, NilSignatureNote);
+  if (!allHave) {
+    return nil;
   }
   
   if (!IsCompatibleWithBlockSignature(methodSignature, blockSignature, error)) {
@@ -146,15 +151,6 @@ static BOOL IsCompatibleWithBlockSignature(NSMethodSignature *methodSignature,
   }
   
   return signaturesMatch;
-}
-
-static NSMethodSignature *MethodSignatureFromBlockSignature(NSMethodSignature *blockSignature) {
-  NSMutableString *sig = [NSMutableString stringWithFormat:@"%s%s%s", blockSignature.methodReturnType, @encode(id), @encode(SEL)];
-  for (NSInteger step = 2; step < blockSignature.numberOfArguments; step++) {
-    NSString *argType = [NSString stringWithUTF8String:[blockSignature getArgumentTypeAtIndex:step]];
-    [sig appendString:argType];
-  }
-  return [NSMethodSignature signatureWithObjCTypes:sig.UTF8String];
 }
 
 @end
