@@ -28,9 +28,6 @@ A simple example is look like this, provide a block to replace the original impl
 
 - For problem caused `forwardInvocation`, you can use this keyword to search issues in `Aspects` or `JSPatch`.
 
-- ## Requirements
-See `NVMAspects.podspec` file.
-
 ## Installation
 
 add the following line to your Podfile:
